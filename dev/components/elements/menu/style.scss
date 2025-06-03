@@ -1,0 +1,124 @@
+@use '../../../style/scss/variables.scss' as *;
+
+.menu {
+  flex: 1 1 auto;
+  display: flex;
+  font-weight: var(--wight_bold);
+  line-height: 1.2;
+
+  @media only screen and (max-width: 991px) {
+    flex: none;
+  }
+  &__wrapper,
+  &__list {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @media only screen and (max-width: 991px) {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+  &__wrapper {
+    align-items: center;
+  }
+  &__list {
+    gap: 30px;
+    & > li {
+      padding: 10px 0;
+
+      @media only screen and (max-width: 991px) {
+        padding: 0;
+        font-size: 18px;
+        width: 160px;
+      }
+      @media (any-hover: hover) {
+        &:hover > a {
+          color: $red;
+          &::after {
+            transform: rotate(180deg) translateY(50%);
+          }
+        }
+        &:hover > ul {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+  &__item {
+    cursor: pointer;
+  }
+  &__sub-list {
+    position: absolute;
+    top: 100%;
+    padding: 20px;
+    background-color: var(--white);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    left: -10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid $red;
+    border-radius: 5px;
+
+    @media only screen and (max-width: 991px) {
+      position: relative;
+
+      opacity: 1;
+      top: 0;
+      margin-top: 3px;
+      border: 0;
+
+      padding: 15px 0;
+			display: none;
+
+      &.active {
+        left: 0;
+        visibility: visible;
+				display: flex;
+				align-items: flex-start;
+				gap: 10px;
+      }
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  &.active{
+    &>a {
+      &::after {
+        transform: rotate(180deg) translateY(50%);
+      }
+    }
+  }
+  & > a {
+    position: relative;
+    padding-right: 20px;
+    &::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url('../../images/icons/arrow.svg');
+      transition: 300ms;
+    }
+  }
+}

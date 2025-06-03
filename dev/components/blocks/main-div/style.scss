@@ -1,0 +1,28 @@
+
+.main-div {
+
+  &__items {
+    display: flex;
+
+    @media only screen and (max-width: 991px) {
+      overflow: auto;
+      margin-right: -15px;
+      padding-right: 15px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+
+    .main-krov__item {
+      margin: 0;
+      margin-right: 5px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+}

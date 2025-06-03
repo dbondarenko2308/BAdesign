@@ -1,0 +1,29 @@
+.breadcrumb {
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    row-gap: 7px;
+    color: #fff;
+
+    span {
+      color: #2271ff;
+    }
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      background: none;
+    }
+    & > *:not(:first-child) {
+      margin-left: 10px;
+      &::before {
+        content: '/';
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+  }
+}

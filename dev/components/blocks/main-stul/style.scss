@@ -1,0 +1,62 @@
+.main-stul {
+  .main-krov {
+    &__text {
+      margin-bottom: 20px;
+      max-width: 638px;
+    }
+
+    &__item {
+      grid-column: span 1 !important;
+
+      &:last-child {
+        width: 100%;
+        max-width: 100%;
+
+        .main-krov__pic {
+          height: 475px;
+
+          @media only screen and (max-width: 991px) {
+            height: 164px;
+            width: 162px;
+          }
+        }
+      }
+    }
+  }
+
+  &__video {
+    position: relative;
+    height: 587px;
+    width: 100%;
+    margin-top: 40px;
+
+    @media only screen and (max-width: 991px) {
+      height: 382px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: 326px 657px;
+    justify-content: space-between;
+    margin-top: 5px;
+
+    @media only screen and (max-width: 1300px) {
+      grid-template-columns: 326px 480px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-right: -15px;
+      overflow: auto;
+      padding-right: 15px;
+      gap: 5px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
