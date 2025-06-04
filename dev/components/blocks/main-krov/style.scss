@@ -108,6 +108,7 @@
     font-size: 24px;
     text-transform: uppercase;
     margin-top: 20px;
+    transition: 300ms;
 
     @media only screen and (max-width: 991px) {
       font-size: 14px;
@@ -117,6 +118,12 @@
 
   &__item {
     max-width: 326px;
+
+    &:hover {
+      .main-krov__name {
+        color: $red;
+      }
+    }
 
     @media only screen and (max-width: 1300px) {
       max-width: 100%;

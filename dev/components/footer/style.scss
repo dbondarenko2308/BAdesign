@@ -26,7 +26,6 @@
     }
   }
 
-  
   &__inner {
     color: #fff;
     padding: 50px 0;
@@ -38,6 +37,17 @@
 
   .header-mobile {
     display: block;
+
+
+    &__nav {
+      li {
+        a {
+          &:hover {
+            opacity: 0.6 ;
+          }
+        }
+      }
+    }
   }
 
   &__top {
@@ -139,6 +149,22 @@
         align-items: center;
         gap: 5px;
         margin-bottom: 10px;
+
+        svg {
+          path {
+            transition: 300ms;
+          }
+        }
+
+        &:hover {
+          color: #858585;
+
+          svg {
+            path {
+              stroke: #858585;
+            }
+          }
+        }
       }
 
       p {
@@ -146,7 +172,6 @@
 
         align-items: center;
         gap: 5px;
-        
       }
     }
   }

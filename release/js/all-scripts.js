@@ -1,21 +1,41 @@
 $(document).ready(function () {
 $(document).ready(function() {
-	$('.header-top__city--head').on('click', function(e) {
+	const $cityContainer = $('.header-top__city')
+	const $cityDropdown = $('.header-top__city--dropdown')
+
+	$cityContainer.on('click', '.header-top__city--head', function(e) {
 		e.stopPropagation()
-		const $dropdown = $(this).next()
-		const isActive = $dropdown.hasClass('active')
+		const isActive = $cityDropdown.hasClass('active')
 
-		$('.header-top__catalog--top').removeClass('active')
-		$('.header-top__catalog--dropdown').removeClass('active')
+		$(
+			'.header-top__catalog--top, .header-top__catalog--dropdown, .header-top__city--dropdown'
+		).removeClass('active')
+		$('body').removeClass('hidden')
 
-		$('.header-top__city--dropdown').removeClass('active')
 		if (!isActive) {
-			$dropdown.addClass('active')
+			$cityDropdown.addClass('active')
 			$('body').addClass('hidden')
-		} else {
-			$('body').removeClass('hidden')
 		}
 	})
+
+	// hover на весь контейнер, чтобы не терять фокус при перемещении в дропдаун
+	$cityContainer.hover(
+		function() {
+			if (window.innerWidth > 991) {
+				$(
+					'.header-top__catalog--top, .header-top__catalog--dropdown, .header-top__city--dropdown'
+				).removeClass('active')
+				$cityDropdown.addClass('active')
+				$('body').addClass('hidden')
+			}
+		},
+		function() {
+			if (window.innerWidth > 991) {
+				$cityDropdown.removeClass('active')
+				$('body').removeClass('hidden')
+			}
+		}
+	)
 
 	$('.header-top__city--dropdown span').on('click', function() {
 		var text = $(this).text()
@@ -212,26 +232,45 @@ $(document).ready(function() {
 		})
 	})
 
-	var amountScrolled = 200
-	var amountScrolledNav = 25
+	const $button = $('.down-up')
+	const bottomOffset = 20
 
-	$(window).scroll(function() {
-		if ($(window).scrollTop() > amountScrolled) {
-			$('.down-up').addClass('show')
+	$(window).on('scroll resize', function() {
+		const scrollTop = $(window).scrollTop()
+		const footerTop = $('footer').offset().top - 220
+		const windowHeight = $(window).height()
+		const buttonHeight = $button.outerHeight()
+
+		console.log(footerTop)
+
+		const stopPoint = footerTop - windowHeight + bottomOffset + 300
+
+		if (scrollTop > 200) {
+			$button.addClass('show')
 		} else {
-			$('.down-up').removeClass('show')
+			$button.removeClass('show')
+		}
+
+		if (scrollTop > stopPoint) {
+			const absoluteTop = stopPoint
+
+			console.log(bottomOffset)
+			$button.addClass('active').css({
+				top: (footerTop + 190) + 'px',
+				bottom: 'auto'
+			})
+		} else {
+			$button.removeClass('active').css({
+				top: 'auto',
+				bottom: '55px'
+			})
 		}
 	})
 
-	$('.down-up').click(function() {
-		$('html, body').animate(
-			{
-				scrollTop: 0
-			},
-			800
-		)
-		return false
-	})
+
+	
+	$.fancybox.defaults.touch = false
+	$.fancybox.defaults.closeExisting = true
 
 	// const serf = new Swiper('.sertif__container', {
 	// 	slidesPerView: 1,

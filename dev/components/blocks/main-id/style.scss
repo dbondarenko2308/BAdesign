@@ -28,6 +28,11 @@
       font-size: 24px;
       color: #858585;
       cursor: pointer;
+      transition: 300ms;
+
+      &:hover {
+        color: #bc4242;
+      }
 
       @media only screen and (max-width: 991px) {
         font-size: 14px;

@@ -10,6 +10,7 @@
   &__container {
     .feed__btn {
       max-width: 100%;
+      text-transform: initial;
 
       @media only screen and (max-width: 991px) {
       }
@@ -27,6 +28,25 @@
     right: 20px;
     top: 20px;
     cursor: pointer;
+
+    @media only screen and (max-width: 991px) {
+      top: 15px;
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: #bc4242;
+        }
+      }
+    }
+
+    svg {
+      path {
+        transition: 300ms;
+
+      }
+    }
   }
 
   &__title {
@@ -92,6 +112,12 @@
         }
       }
     }
+  }
+}
+
+#thanks {
+  .modal__text {
+    margin-bottom: 0; 
   }
 }
 

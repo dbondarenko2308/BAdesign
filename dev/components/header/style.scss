@@ -10,7 +10,12 @@
     display: flex;
     align-items: center;
     position: relative;
-    z-index: 3;
+    z-index: 12;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
 
     @media only screen and (max-width: 991px) {
       display: none;
@@ -28,6 +33,7 @@
         width: 100%;
         padding: 15px 0;
         height: 100%;
+        overflow: auto;
       }
     }
 
@@ -71,12 +77,17 @@
 
       @media only screen and (max-width: 991px) {
         margin-top: 25px;
+        width: 100%;
       }
     }
 
     &__city {
       cursor: pointer;
       position: relative;
+
+      @media only screen and (max-width: 991px) {
+        width: 100%;
+      }
 
       &--dropdown {
         position: absolute;
@@ -88,7 +99,17 @@
         min-width: 165px;
         top: 42px;
         z-index: 34;
-        z-index: 2;
+        z-index: 12;
+
+        @media only screen and (max-width: 991px) {
+          position: relative;
+          width: 100%;
+          top: 0;
+          margin-top: 10px;
+          max-width: 100%;
+          width: 100%;
+          min-width: 100%;
+        }
 
         &.active {
           display: block;
@@ -113,6 +134,33 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        transition: 300ms;
+        position: relative;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 30px;
+          background: transparent;
+          top: 15px;
+        }
+        svg {
+          path {
+            transition: 300ms;
+          }
+        }
+
+        &:hover {
+          color: rgba(133, 133, 133, 1);
+
+          svg {
+            path {
+              fill: rgba(133, 133, 133, 1);
+            }
+          }
+        }
       }
     }
 
@@ -174,12 +222,14 @@
         color: #333;
         margin-top: 10px;
         transition: 300ms;
+        text-transform: uppercase;
 
         @media only screen and (max-width: 991px) {
           color: #fff;
           font-size: 16px;
           font-weight: 400;
           margin-top: 0;
+          text-transform: initial;
         }
       }
 
@@ -251,6 +301,13 @@
         flex-direction: column;
         align-items: flex-start;
         margin-top: 30px;
+        margin-bottom: 30px;
+      }
+    }
+
+    &__number {
+      &:hover {
+        color: rgba(133, 133, 133, 1);
       }
     }
 
@@ -258,6 +315,14 @@
       display: flex;
       align-items: center;
       gap: 30px;
+
+      li {
+        a {
+          &:hover {
+            color: rgba(133, 133, 133, 1);
+          }
+        }
+      }
 
       @media only screen and (max-width: 991px) {
         flex-direction: column;
@@ -317,18 +382,60 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    svg {
+      path {
+        transition: 300ms;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: rgba(214, 214, 214, 1);
+        }
+      }
+    }
   }
 
   &__like {
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    svg {
+      path {
+        transition: 300ms;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: rgba(214, 214, 214, 1);
+        }
+      }
+    }
   }
 
   &__basket {
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    svg {
+      path {
+        transition: 300ms;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: rgba(214, 214, 214, 1);
+        }
+      }
+    }
   }
 
   &-mobile {
@@ -356,7 +463,7 @@
 
     &__desc {
       font-size: 14px;
-      color: #D6D6D6;
+      color: #d6d6d6;
       margin-top: 15px;
     }
   }
