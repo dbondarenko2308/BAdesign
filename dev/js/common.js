@@ -337,14 +337,13 @@ $(document).ready(function() {
 				}
 			})
 
-			// Видео закончилось
 			$video.on('ended', function() {
 				$btn
 					.removeClass('playing')
 					.find('img')
 					.attr('src', 'images/play-vid.svg')
 				$video.removeClass('playing')
-				updateButtonVisibility(true) // показать кнопку
+				updateButtonVisibility(true) 
 			})
 		})
 	})
