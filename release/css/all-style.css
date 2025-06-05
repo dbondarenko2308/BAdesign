@@ -861,23 +861,49 @@ video {
   cursor: pointer;
   -webkit-transition: 300ms;
   transition: 300ms;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.main-brand__play.playing {
+  opacity: 0;
+}
+
+.main-brand__play.playing.active {
+  opacity: 1;
+}
+
+.main-brand__play:hover::before {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.main-brand__play::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  -webkit-transition: 300ms;
+  transition: 300ms;
 }
 
 .main-brand__play img {
   -webkit-transition: 300ms;
   transition: 300ms;
-}
-
-.main-brand__play:hover {
-  width: 100px;
-  height: 100px;
-}
-
-.main-brand__play:hover img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
 }
 
 .main-brand__info {

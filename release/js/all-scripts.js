@@ -235,13 +235,21 @@ $(document).ready(function() {
 	const $button = $('.down-up')
 	const bottomOffset = 20
 
+	$button.on('click', function() {
+		$('html, body').animate({ scrollTop: 0 }, 600)
+	})
+
 	$(window).on('scroll resize', function() {
 		const scrollTop = $(window).scrollTop()
-		const footerTop = $('footer').offset().top - 220
 		const windowHeight = $(window).height()
-		const buttonHeight = $button.outerHeight()
+		const windowWidth = $(window).width()
+		let footerTop
 
-		console.log(footerTop)
+		if (windowWidth < 991) {
+			footerTop = $('footer').offset().top - 210
+		} else {
+			footerTop = $('footer').offset().top - 220
+		}
 
 		const stopPoint = footerTop - windowHeight + bottomOffset + 300
 
@@ -252,11 +260,8 @@ $(document).ready(function() {
 		}
 
 		if (scrollTop > stopPoint) {
-			const absoluteTop = stopPoint
-
-			console.log(bottomOffset)
 			$button.addClass('active').css({
-				top: (footerTop + 190) + 'px',
+				top: footerTop + 190 + 'px',
 				bottom: 'auto'
 			})
 		} else {
@@ -267,8 +272,84 @@ $(document).ready(function() {
 		}
 	})
 
+	$(function() {
+		$('.main-brand__play').each(function() {
+			const $btn = $(this)
+			const $video = $btn.next('video')
 
-	
+			if ($video.length === 0) return
+
+			const video = $video.get(0)
+
+			function updateButtonVisibility(show) {
+				if (show) {
+					$btn.addClass('active')
+				} else {
+					$btn.removeClass('active')
+				}
+			}
+
+			updateButtonVisibility(true)
+
+			$btn.on('click', function() {
+				if (video.paused) {
+					$('video').each(function() {
+						if (!this.paused) {
+							this.pause()
+							const $otherBtn = $(this).prev('.main-brand__play')
+							$otherBtn
+								.removeClass('playing')
+								.find('img')
+								.attr('src', 'images/play-vid.svg')
+								.show()
+							$(this).removeClass('playing')
+						}
+					})
+
+					video.muted = false
+					video.play()
+					$btn
+						.addClass('playing')
+						.find('img')
+						.attr('src', 'images/stop-vid.svg')
+					$video.addClass('playing')
+					updateButtonVisibility(false)
+				} else {
+					video.pause()
+					$btn
+						.removeClass('playing')
+						.find('img')
+						.attr('src', 'images/play-vid.svg')
+					$video.removeClass('playing')
+					updateButtonVisibility(true)
+				}
+			})
+
+			$btn.on('mouseenter', function() {
+				if ($btn.hasClass('playing')) {
+					updateButtonVisibility(true) 
+				}
+			})
+
+		
+			$btn.on('mouseleave', function() {
+				if ($btn.hasClass('playing')) {
+					updateButtonVisibility(false) 
+				}
+			})
+
+			// Видео закончилось
+			$video.on('ended', function() {
+				$btn
+					.removeClass('playing')
+					.find('img')
+					.attr('src', 'images/play-vid.svg')
+				$video.removeClass('playing')
+				updateButtonVisibility(true) // показать кнопку
+			})
+		})
+	})
+
 	$.fancybox.defaults.touch = false
 	$.fancybox.defaults.closeExisting = true
 

@@ -71,7 +71,6 @@
       max-width: 100%;
 
       width: 100%;
-
     }
   }
 
@@ -83,20 +82,47 @@
     z-index: 1;
     cursor: pointer;
     transition: 300ms;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    img {
+
+    &.playing {
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+
+
+    &:hover {
+      &::before {
+        transform: scale(1.2);
+      }
+    }
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid #fff;
       transition: 300ms;
     }
 
-    &:hover {
-      width: 100px;
-      height: 100px;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+
+
+   
+
+    img {
+      transition: 300ms;
     }
   }
 
