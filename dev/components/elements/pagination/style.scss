@@ -1,73 +1,79 @@
 .pagination {
-	margin-top: 35px;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	gap: 10px;
-	color: var(--green_2);
-	@media (max-width: 479.98px) {
-		margin-top: 20px;
-		.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+	@media only screen and (max-width: 991px) {
+		flex-direction: column-reverse;
+		gap: 20px;
+	}
+
+
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		@media only screen and (max-width: 991px) {
+			justify-content: space-between;
 			width: 100%;
 		}
 	}
-	&__btn.hide {
-		display: none;
-	}
-}
 
-.pagination,
-.pagination__wrapper,
-.pagination__list {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	@media (max-width: 479.98px) {
+	&__list {
+		display: flex;
+		align-items: center;
+	}
+
+	&__item {
+		width: 26px;
+		height: 40px;
+		display: flex;
+		align-items: center;
 		justify-content: center;
+
+		&.current {
+			background: #BC4242;
+			color: #fff;
+		}
 	}
-}
 
-.pagination__wrapper,
-.pagination__list {
-	gap: 10px;
-	@media (max-width: 479.98px) {
-		gap: 7px;
+	&__btn {
+		display: flex;
+		align-items: center;
+
+		@media only screen and (max-width: 991px) {
+			width: 44px;
+			height: 25px;
+		}
+
+		&.hide {
+			svg {
+				path {
+					fill: #D6D6D6;
+				}
+			}
+		}
+
+		svg {
+			path {
+				fill: #BC4242;
+			}
+		}
 	}
-}
 
-.pagination__list {
-	list-style: none;
-	text-align: center;
-}
+	.btn-white {
+		border: 1px solid #333;
 
-.pagination__item {
-	min-width: 30px;
-	padding: 5px;
-	border-radius: 5px;
-	-webkit-transition:
-		background-color 0.3s,
-		color 0.3s;
-	-o-transition:
-		background-color 0.3s,
-		color 0.3s;
-	transition:
-		background-color 0.3s,
-		color 0.3s;
-}
+		@media only screen and (max-width: 991px) {
+			width: 100%;
+			max-width: 100%;
+		}
 
-.pagination__item:hover,
-.pagination__item.current {
-	background-color: var(--green_2);
-	color: var(--white);
-}
 
-.pagination .prev {
-	-webkit-transform: rotate(-180deg);
-	-ms-transform: rotate(-180deg);
-	transform: rotate(-180deg);
+		&:hover {
+			border: 1px solid transparent;
+		}
+	}
 }

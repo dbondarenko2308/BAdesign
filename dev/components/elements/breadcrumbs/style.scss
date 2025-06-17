@@ -2,13 +2,26 @@
   &__list {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     list-style: none;
     row-gap: 7px;
-    color: #fff;
+    color: #333;
+
+    @media only screen and (max-width: 991px) {
+      margin-right: -15px;
+      padding-right: 15px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    li {
+      flex-shrink: 0;
+    }
 
     span {
-      color: #2271ff;
+      color: #858585;
     }
     &::-webkit-scrollbar {
       height: 0;
@@ -20,9 +33,14 @@
     & > *:not(:first-child) {
       margin-left: 10px;
       &::before {
-        content: '/';
+        content: '';
         display: inline-block;
+        background: url('/images/arrow-bread.svg') no-repeat;
+        width: 9px;
+        height: 16px;
         margin-right: 10px;
+        position: relative;
+        top: 3px;
       }
     }
   }

@@ -17,7 +17,6 @@ $(document).ready(function() {
 		}
 	})
 
-	// hover на весь контейнер, чтобы не терять фокус при перемещении в дропдаун
 	$cityContainer.hover(
 		function() {
 			if (window.innerWidth > 991) {
@@ -121,6 +120,31 @@ $(document).ready(function() {
 
 	swiperHow()
 	window.addEventListener('resize', swiperHow)
+
+	var init9 = false
+	var swiper9
+	function swiperProduct() {
+		if (window.innerWidth < 992) {
+			if (!init9) {
+				init9 = true
+				swiper9 = new Swiper('.product-info__container', {
+					slidesPerView: 1,
+					spaceBetween: 5,
+					loop: false,
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true
+					}
+				})
+			}
+		} else if (init9) {
+			swiper9.destroy()
+			init9 = false
+		}
+	}
+
+	swiperProduct()
+	window.addEventListener('resize', swiperProduct)
 
 	const swipers = []
 	let currentIndex = 0
@@ -326,14 +350,13 @@ $(document).ready(function() {
 
 			$btn.on('mouseenter', function() {
 				if ($btn.hasClass('playing')) {
-					updateButtonVisibility(true) 
+					updateButtonVisibility(true)
 				}
 			})
 
-		
 			$btn.on('mouseleave', function() {
 				if ($btn.hasClass('playing')) {
-					updateButtonVisibility(false) 
+					updateButtonVisibility(false)
 				}
 			})
 
@@ -343,13 +366,380 @@ $(document).ready(function() {
 					.find('img')
 					.attr('src', 'images/play-vid.svg')
 				$video.removeClass('playing')
-				updateButtonVisibility(true) 
+				updateButtonVisibility(true)
 			})
 		})
 	})
 
 	$.fancybox.defaults.touch = false
 	$.fancybox.defaults.closeExisting = true
+
+	if ($('.filter__price--slider').length) {
+		$('.filter__price--slider').each(function() {
+			let $range = $(this)
+			let parent = $(this).parent()
+			let $inputFrom = parent.find('.filter__price--low')
+			let $inputTo = parent.find('.filter__price--high')
+			let instance
+			let min = $inputFrom.data('min')
+			let max = $inputTo.data('max')
+			let from = $range.data('from')
+			let to = $range.data('to')
+
+			$range.ionRangeSlider({
+				skin: 'round',
+				type: 'double',
+				onStart: updateInputs,
+				onChange: updateInputs,
+				onFinish: updateInputsWT
+			})
+
+			instance = $range.data('ionRangeSlider')
+
+			function updateInputs(data) {
+				from = data.from
+				to = data.to
+
+				if (data.from === data.min || data.from === '') {
+					$inputFrom.prop('value', '')
+					$inputFrom.prop('placeholder', data.min)
+				} else {
+					$inputFrom.prop('value', from)
+					$inputFrom.prop('placeholder', '')
+				}
+
+				if (data.to === data.max || data.to === '') {
+					$inputTo.prop('value', '')
+					$inputTo.prop('placeholder', data.max)
+				} else {
+					$inputTo.prop('value', to)
+					$inputTo.prop('placeholder', '')
+				}
+			}
+
+			function updateInputsWT(data) {
+				from = data.from
+				to = data.to
+
+				if (data.from === data.min || data.from === '') {
+					$inputFrom.prop('value', '')
+					$inputFrom.prop('placeholder', data.min)
+				} else {
+					$inputFrom.prop('value', from)
+					$inputFrom.prop('placeholder', '')
+				}
+
+				if (data.to === data.max || data.to === '') {
+					$inputTo.prop('value', '')
+					$inputTo.prop('placeholder', data.max)
+				} else {
+					$inputTo.prop('value', to)
+					$inputTo.prop('placeholder', '')
+				}
+
+				$inputFrom.trigger('keyup')
+				$inputTo.trigger('keyup')
+			}
+
+			$inputFrom.on('change', function() {
+				var val = $(this).prop('value')
+				if (val < min) {
+					val = min
+				} else if (val > to) {
+					val = to
+				}
+
+				instance.update({
+					from: val
+				})
+				$(this).prop('value', val)
+			})
+
+			$inputTo.on('change', function() {
+				var val = $(this).prop('value')
+				if (val < from) {
+					val = from
+				} else if (val > max) {
+					val = max
+				}
+				instance.update({
+					to: val
+				})
+
+				$(this).prop('value', val)
+			})
+		})
+	}
+
+	$('body').on('click', '.filter__top', function() {
+		$(this).toggleClass('active')
+		$(this).next().toggleClass('active')
+	})
+
+	$('[data-price]').on('click', function() {
+		var parent = $(this).closest('.prod-catalog__inner')
+		var item = parent.find('[data-price-item]')
+		var itemTop = item.find('.filter__top')
+		var itemBody = item.find('.filter__body')
+		item.addClass('active')
+
+		if (item.hasClass('active')) {
+			itemTop.addClass('active')
+			itemBody.addClass('active')
+		} else {
+			itemTop.removeClass('active')
+			itemBody.removeClass('active')
+		}
+
+		$('.filter').addClass('active')
+		$('.filter-over').addClass('active')
+	})
+
+	$('[data-color]').on('click', function() {
+		var parent = $(this).closest('.prod-catalog__inner')
+		var item = parent.find('[data-color-item]')
+		var itemTop = item.find('.filter__top')
+		var itemBody = item.find('.filter__body')
+		item.addClass('active')
+
+		if (item.hasClass('active')) {
+			itemTop.addClass('active')
+			itemBody.addClass('active')
+		} else {
+			itemTop.removeClass('active')
+			itemBody.removeClass('active')
+		}
+
+		$('.filter').addClass('active')
+		$('.filter-over').addClass('active')
+	})
+
+	$('body').on('click', '.prod-catalog__filter', function() {
+		$('.filter').addClass('active')
+		$('.filter-over').addClass('active')
+	})
+
+	$('.filter-over').on('click', function() {
+		$('[data-price-item]').removeClass('active')
+		$('[data-color-item]').removeClass('active')
+		$('.filter__body').removeClass('active')
+		$('.filter__top').removeClass('active')
+		$(this).removeClass('active')
+		$('.filter').removeClass('active')
+	})
+
+	$('.filter__head--close').on('click', function() {
+		$('.filter').removeClass('active')
+		$('[data-price-item]').removeClass('active')
+		$('[data-color-item]').removeClass('active')
+		$('.filter__body').removeClass('active')
+		$('.filter__top').removeClass('active')
+		$('.filter-over').removeClass('active')
+	})
+
+	$('.prod-catalog__list--head').on('click', function() {
+		$(this).next().toggleClass('active')
+	})
+
+	$('.prod-catalog__list--dropdown span').on('click', function() {
+		var text = $(this).text()
+		var parent = $(this).closest('.prod-catalog__list')
+		var choose = parent.find('.prod-catalog__list--head span')
+		choose.text(text)
+		$('.prod-catalog__list--dropdown').removeClass('active')
+		$('.prod-catalog__list--head').removeClass('active')
+	})
+
+	$('.prod-cards__like').on('click', function() {
+		$(this).toggleClass('active')
+		return false
+	})
+
+		var sliderThumbnail2 = new Swiper('.product__container-2', {
+		slidesPerView: 6,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		spaceBetween: 5
+	})
+
+	var slider2 = new Swiper('.product__top-2', {
+		thumbs: {
+			swiper: sliderThumbnail2
+		},
+
+		pagination: {
+			clickable: true,
+			el: '.swiper-pagination'
+		},
+
+		navigation: {
+			prevEl: '.swiper-button__prev',
+			nextEl: '.swiper-button__next'
+		}
+	})
+
+
+
+	var sliderThumbnail = new Swiper('.product__container', {
+		slidesPerView: 6,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		spaceBetween: 5
+	})
+
+	var slider = new Swiper('.product__top', {
+		thumbs: {
+			swiper: sliderThumbnail
+		},
+
+		pagination: {
+			clickable: true,
+			el: '.swiper-pagination'
+		},
+
+		navigation: {
+			prevEl: '.swiper-button__prev',
+			nextEl: '.swiper-button__next'
+		}
+	})
+
+	$('.product__gabar--list li').on('click', function() {
+		$('.product__gabar--list li').removeClass('active')
+		$(this).addClass('active')
+	})
+
+	$('.product__meh--list li').on('click', function() {
+		$('.product__meh--list li').removeClass('active')
+		$(this).addClass('active')
+	})
+
+	$('.product__like').on('click', function() {
+		$(this).toggleClass('active')
+		return false
+	})
+
+	$('.product-rec__container').each(function(index) {
+		const $container = $(this)
+		const $parent = $container.closest('.product-rec')
+		const prodctRec = new Swiper($container[0], {
+			slidesPerView: 1,
+			spaceBetween: 20,
+			pagination: {
+				clickable: true,
+				el: '.swiper-pagination'
+			},
+
+			navigation: {
+				nextEl: $parent.find('.swiper-btn-next')[0],
+				prevEl: $parent.find('.swiper-btn-prev')[0]
+			},
+			breakpoints: {
+				991: {
+					slidesPerView: 2
+				}
+			}
+		})
+	})
+
+	function openPopup(selector) {
+		$('.popup').removeClass('active')
+		$(selector).addClass('active')
+		$('body').addClass('hidden-popup')
+	}
+
+	function closePopup(selector) {
+		$(selector).removeClass('active')
+		if ($('.popup.active').length === 0) {
+			$('body').removeClass('hidden-popup')
+		}
+	}
+
+	$('[data-otbivka]').on('click', function(e) {
+		e.stopPropagation()
+		openPopup('[data-popup-obiv]')
+	})
+
+	$('[data-otbivka-close]').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('[data-popup-obiv]')
+	})
+
+
+	
+	$('[data-opora]').on('click', function(e) {
+		e.stopPropagation()
+		openPopup('[data-popup-opor]')
+	})
+
+	$('[data-opor-close]').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('[data-popup-opor]')
+	})
+
+	$('[data-zamsh-item]').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('[data-popup-obiv]')
+		openPopup('.popup-rec')
+	})
+
+	$('.popup-rec .popup__back').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-rec')
+		openPopup('[data-popup-obiv]')
+	})
+
+	$('.popup-rec .popup__close').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-rec')
+	})
+
+	$('[data-com-item]').on('click', function(e) {
+		e.stopPropagation()
+		openPopup('.popup-complect')
+	})
+
+	$('.popup-complect .popup__close').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-complect')
+	})
+
+	$('[data-card-open]').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-complect')
+		openPopup('.popup-cards')
+	})
+
+	$('.popup-cards .popup__back').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-cards')
+		openPopup('.popup-complect')
+	})
+
+	$('.popup-cards .popup__close').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-cards')
+	})
+
+	$('.popup').on('click', function(e) {
+		e.stopPropagation()
+	})
+
+
+	$('[data-raz]').on('click', function(e) {
+		e.stopPropagation()
+		openPopup('.popup-raz')
+	})
+
+	$('[data-raz-close]').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('.popup-raz')
+	})
+
+
+	$(document).on('click', function() {
+		$('.popup').removeClass('active')
+		$('body').removeClass('hidden-popup')
+	})
 
 	// const serf = new Swiper('.sertif__container', {
 	// 	slidesPerView: 1,

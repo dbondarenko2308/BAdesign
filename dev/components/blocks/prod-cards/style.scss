@@ -1,0 +1,98 @@
+.prod-cards {
+  margin-bottom: 130px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 70px;
+  }
+
+
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px 5px;
+    margin-bottom: 40px;
+
+    @media only screen and (max-width: 991px) {
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+
+    &:hover {
+
+      .prod-cards__name {
+        color: #bc4242;
+      }
+    }
+  }
+
+  &__top {
+    position: relative;
+    height: 540px;
+
+    @media only screen and (max-width: 991px) {
+      height: 270px;
+    }
+  }
+
+  &__like {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: 991px) {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.active {
+      svg {
+        path {
+          fill: #bc4242;
+          stroke: #bc4242;
+        }
+      }
+    }
+  }
+
+  &__img {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 15px;
+    transition: 300ms;
+
+    @media only screen and (max-width: 991px) {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+
+  &__price {
+    font-weight: 600;
+    font-size: 24px;
+    margin-top: 10px;
+
+    @media only screen and (max-width: 991px) {
+      font-size: 18px;
+    }
+  }
+}
