@@ -404,6 +404,37 @@
     align-items: center;
     cursor: pointer;
 
+    position: relative;
+
+    &.active {
+      svg {
+        path {
+          stroke: $red;
+        }
+      }
+
+      .header__like--number {
+        background: $red;
+        display: flex;
+      }
+    }
+
+    &--number {
+      position: absolute;
+      background: #333;
+      color: #fff;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      bottom: -2px;
+      right: -2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      display: none;
+    }
+
     svg {
       path {
         transition: 300ms;
@@ -423,6 +454,36 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    position: relative;
+
+    &.active {
+      svg {
+        path {
+          stroke: $red;
+        }
+      }
+
+      .header__basket--number {
+        background: $red;
+        display: flex;
+      }
+    }
+
+    &--number {
+      position: absolute;
+      background: #333;
+      color: #fff;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      bottom: -2px;
+      right: -2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      display: none;
+    }
 
     svg {
       path {

@@ -218,7 +218,8 @@
                     />
                   </svg>
                 </div>
-                <div class="header__like">
+                <div class="header__like ">
+                  <div class="header__like--number">99</div>
                   <svg
                     width="24"
                     height="25"
@@ -234,7 +235,8 @@
                     />
                   </svg>
                 </div>
-                <div class="header__basket">
+                <div class="header__basket " data-basket>
+                   <div class="header__basket--number">99</div>
                   <svg
                     width="24"
                     height="25"
@@ -2918,6 +2920,499 @@
       предоставления — на 6, 10 или 12 месяцев. Ваш тариф и размер ежемесячного
       платежа будет определен по результатам рассмотрения заявки.
     </div>
+  </div>
+</div>
+
+<!-- basket-popup -->
+
+<div class="basket-popup popup" data-popup-basket>
+  <div class="basket-popup__top">
+    <div class="basket-popup__name">Корзина</div>
+
+    <div class="basket-popup__close" data-basket-close>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 18L6 6M18 6L6 18"
+          stroke="#333333"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+  <div class="basket-popup__items">
+    <div class="basket-popup__item">
+      <div class="basket-popup__img">
+        <img src="images/basket-1.png" alt="" />
+      </div>
+      <div class="basket-popup__info">
+        <div class="basket-popup__head">
+          <span>Кровать Бежевая</span>
+          <div class="basket-popup__delete">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L1 1M11 1L1 11"
+                stroke="#858585"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="basket-popup__art">Арт. BD-4939374</div>
+        <div class="basket-popup__text">
+          <p>Цвет обивки: Микровелюр Marbel 102</p>
+          <p>Размер спального места: 160х200</p>
+          <p>Механизм: Без механизма</p>
+          <p>Цвет опор: Дуб, 01</p>
+        </div>
+
+        <div class="basket-popup__form">
+          <form action="#">
+            <div class="basket-popup__counter">
+              <div class="basket-popup__counter--minus disabled" >
+                <svg
+                  width="16"
+                  height="2"
+                  viewBox="0 0 16 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7873 1H1.21094"
+                    stroke="#333333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <input type="text" value="1" />
+              <div class="basket-popup__counter--plus">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                    stroke="#BC4242"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="basket-popup__sum">110 000 ₽</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="basket-popup__item">
+      <div class="basket-popup__img">
+        <img src="images/basket-1.png" alt="" />
+      </div>
+      <div class="basket-popup__info">
+        <div class="basket-popup__head">
+          <span>Кровать Бежевая</span>
+          <div class="basket-popup__delete">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L1 1M11 1L1 11"
+                stroke="#858585"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="basket-popup__art">Арт. BD-4939374</div>
+        <div class="basket-popup__text">
+          <p>Цвет обивки: Микровелюр Marbel 102</p>
+          <p>Размер спального места: 160х200</p>
+          <p>Механизм: Без механизма</p>
+          <p>Цвет опор: Дуб, 01</p>
+        </div>
+
+        <div class="basket-popup__form">
+          <form action="#">
+            <div class="basket-popup__counter">
+              <div class="basket-popup__counter--minus">
+                <svg
+                  width="16"
+                  height="2"
+                  viewBox="0 0 16 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7873 1H1.21094"
+                    stroke="#333333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <input type="text" value="1" />
+              <div class="basket-popup__counter--plus">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                    stroke="#BC4242"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="basket-popup__sum">110 000 ₽</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="basket-popup__item">
+      <div class="basket-popup__img">
+        <img src="images/basket-1.png" alt="" />
+      </div>
+      <div class="basket-popup__info">
+        <div class="basket-popup__head">
+          <span>Кровать Бежевая</span>
+          <div class="basket-popup__delete">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L1 1M11 1L1 11"
+                stroke="#858585"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="basket-popup__art">Арт. BD-4939374</div>
+        <div class="basket-popup__text">
+          <p>Цвет обивки: Микровелюр Marbel 102</p>
+          <p>Размер спального места: 160х200</p>
+          <p>Механизм: Без механизма</p>
+          <p>Цвет опор: Дуб, 01</p>
+        </div>
+
+        <div class="basket-popup__form">
+          <form action="#">
+            <div class="basket-popup__counter">
+              <div class="basket-popup__counter--minus">
+                <svg
+                  width="16"
+                  height="2"
+                  viewBox="0 0 16 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7873 1H1.21094"
+                    stroke="#333333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <input type="text" value="1" />
+              <div class="basket-popup__counter--plus">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                    stroke="#BC4242"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="basket-popup__sum">110 000 ₽</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="basket-popup__item">
+      <div class="basket-popup__img">
+        <img src="images/basket-1.png" alt="" />
+      </div>
+      <div class="basket-popup__info">
+        <div class="basket-popup__head">
+          <span>Кровать Бежевая</span>
+          <div class="basket-popup__delete">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L1 1M11 1L1 11"
+                stroke="#858585"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="basket-popup__art">Арт. BD-4939374</div>
+        <div class="basket-popup__text">
+          <p>Цвет обивки: Микровелюр Marbel 102</p>
+          <p>Размер спального места: 160х200</p>
+          <p>Механизм: Без механизма</p>
+          <p>Цвет опор: Дуб, 01</p>
+        </div>
+
+        <div class="basket-popup__form">
+          <form action="#">
+            <div class="basket-popup__counter">
+              <div class="basket-popup__counter--minus">
+                <svg
+                  width="16"
+                  height="2"
+                  viewBox="0 0 16 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7873 1H1.21094"
+                    stroke="#333333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <input type="text" value="1" />
+              <div class="basket-popup__counter--plus">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                    stroke="#BC4242"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="basket-popup__sum">110 000 ₽</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="basket-popup__item">
+      <div class="basket-popup__img">
+        <img src="images/basket-1.png" alt="" />
+      </div>
+      <div class="basket-popup__info">
+        <div class="basket-popup__head">
+          <span>Кровать Бежевая</span>
+          <div class="basket-popup__delete">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L1 1M11 1L1 11"
+                stroke="#858585"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="basket-popup__art">Арт. BD-4939374</div>
+        <div class="basket-popup__text">
+          <p>Цвет обивки: Микровелюр Marbel 102</p>
+          <p>Размер спального места: 160х200</p>
+          <p>Механизм: Без механизма</p>
+          <p>Цвет опор: Дуб, 01</p>
+        </div>
+
+        <div class="basket-popup__form">
+          <form action="#">
+            <div class="basket-popup__counter">
+              <div class="basket-popup__counter--minus">
+                <svg
+                  width="16"
+                  height="2"
+                  viewBox="0 0 16 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7873 1H1.21094"
+                    stroke="#333333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <input type="text" value="1" />
+              <div class="basket-popup__counter--plus">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                    stroke="#BC4242"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="basket-popup__sum">110 000 ₽</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="basket-popup__item">
+      <div class="basket-popup__img">
+        <img src="images/basket-1.png" alt="" />
+      </div>
+      <div class="basket-popup__info">
+        <div class="basket-popup__head">
+          <span>Кровать Бежевая</span>
+          <div class="basket-popup__delete">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 11L1 1M11 1L1 11"
+                stroke="#858585"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="basket-popup__art">Арт. BD-4939374</div>
+        <div class="basket-popup__text">
+          <p>Цвет обивки: Микровелюр Marbel 102</p>
+          <p>Размер спального места: 160х200</p>
+          <p>Механизм: Без механизма</p>
+          <p>Цвет опор: Дуб, 01</p>
+        </div>
+
+        <div class="basket-popup__form">
+          <form action="#">
+            <div class="basket-popup__counter">
+              <div class="basket-popup__counter--minus">
+                <svg
+                  width="16"
+                  height="2"
+                  viewBox="0 0 16 2"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7873 1H1.21094"
+                    stroke="#333333"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <input type="text" value="1" />
+              <div class="basket-popup__counter--plus">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                    stroke="#BC4242"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="basket-popup__sum">110 000 ₽</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="basket-popup__bot">
+    <div class="basket-popup__bot--head">
+      <span>Подытог</span>
+      <p>1 600 000 ₽</p>
+    </div>
+
+    <a href="#" class="basket-popup__btn btn btn-red">Оформить заказ</a>
   </div>
 </div>
 

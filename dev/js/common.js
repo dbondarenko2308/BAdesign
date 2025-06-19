@@ -555,7 +555,7 @@ $(document).ready(function() {
 		return false
 	})
 
-		var sliderThumbnail2 = new Swiper('.product__container-2', {
+	var sliderThumbnail2 = new Swiper('.product__container-2', {
 		slidesPerView: 6,
 		watchSlidesVisibility: true,
 		watchSlidesProgress: true,
@@ -577,8 +577,6 @@ $(document).ready(function() {
 			nextEl: '.swiper-button__next'
 		}
 	})
-
-
 
 	var sliderThumbnail = new Swiper('.product__container', {
 		slidesPerView: 6,
@@ -664,8 +662,17 @@ $(document).ready(function() {
 		closePopup('[data-popup-obiv]')
 	})
 
+		$('[data-basket]').on('click', function(e) {
+		e.stopPropagation()
+		openPopup('[data-popup-basket]')
+	})
 
-	
+	$('[data-basket-close]').on('click', function(e) {
+		e.stopPropagation()
+		closePopup('[data-popup-basket]')
+	})
+
+
 	$('[data-opora]').on('click', function(e) {
 		e.stopPropagation()
 		openPopup('[data-popup-opor]')
@@ -720,10 +727,9 @@ $(document).ready(function() {
 		closePopup('.popup-cards')
 	})
 
-	$('.popup').on('click', function(e) {
+	$('.basket-popup, .popup').on('click', function(e) {
 		e.stopPropagation()
 	})
-
 
 	$('[data-raz]').on('click', function(e) {
 		e.stopPropagation()
@@ -735,10 +741,34 @@ $(document).ready(function() {
 		closePopup('.popup-raz')
 	})
 
-
 	$(document).on('click', function() {
 		$('.popup').removeClass('active')
 		$('body').removeClass('hidden-popup')
+	})
+
+	const $input = $('.basket-popup__counter input')
+	const $minus = $('.basket-popup__counter--minus')
+	const $plus = $('.basket-popup__counter--plus')
+
+	$minus.on('click', function() {
+		let $currentInput = $(this).siblings('input')
+		let value = parseInt($currentInput.val(), 10)
+		if (value > 1) {
+			$currentInput.val(value - 1)
+		}
+	})
+
+	$plus.on('click', function() {
+		let $currentInput = $(this).siblings('input')
+		let value = parseInt($currentInput.val(), 10)
+		$currentInput.val(value + 1)
+	})
+
+	$('.basket-popup__counter input').on('input blur', function() {
+		let value = parseInt($(this).val(), 10)
+		if (isNaN(value) || value < 1) {
+			$(this).val(1)
+		}
 	})
 
 	// const serf = new Swiper('.sertif__container', {
