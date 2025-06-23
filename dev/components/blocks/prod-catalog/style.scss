@@ -142,7 +142,7 @@
   &__items {
     overflow-y: auto;
     margin-bottom: 30px;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 70px);
     padding-right: 10px;
 
     &::-webkit-scrollbar {
@@ -205,6 +205,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    position: sticky;
+    bottom: 0;
+    padding: 20px 0;
+    background: #fff;
 
     .btn {
       width: 100%;
