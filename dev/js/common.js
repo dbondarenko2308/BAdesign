@@ -471,71 +471,46 @@ $(document).ready(function() {
 		})
 	}
 
+	// Переключение фильтра (открытие/закрытие одного блока)
 	$('.filter__top').on('click', function() {
 		$(this).toggleClass('active')
-		$(this).next().toggleClass('active')
+		$(this).next('.filter__body').toggleClass('active')
 	})
 
-	$('[data-price]').on('click', function() {
-		var parent = $(this).closest('.prod-catalog__inner')
-		var item = parent.find('[data-price-item]')
-		var itemTop = item.find('.filter__top')
-		var itemBody = item.find('.filter__body')
+	// Универсальный обработчик для открытия фильтра по атрибуту
+	$('[data-price], [data-color]').on('click', function() {
+		const parent = $(this).closest('.prod-catalog__inner')
+		const isPrice = $(this).is('[data-price]')
+		const item = parent.find(
+			isPrice ? '[data-price-item]' : '[data-color-item]'
+		)
+		const itemTop = item.find('.filter__top')
+		const itemBody = item.find('.filter__body')
+
 		item.addClass('active')
+		itemTop.addClass('active')
+		itemBody.addClass('active')
 
-		if (item.hasClass('active')) {
-			itemTop.addClass('active')
-			itemBody.addClass('active')
-		} else {
-			itemTop.removeClass('active')
-			itemBody.removeClass('active')
-		}
-
-		$('.filter').addClass('active')
-		$('.filter-over').addClass('active')
+		$('.filter, .filter-over').addClass('active')
+		$('body').addClass('filter-hidden')
 	})
 
-	$('[data-color]').on('click', function() {
-		var parent = $(this).closest('.prod-catalog__inner')
-		var item = parent.find('[data-color-item]')
-		var itemTop = item.find('.filter__top')
-		var itemBody = item.find('.filter__body')
-		item.addClass('active')
-
-		if (item.hasClass('active')) {
-			itemTop.addClass('active')
-			itemBody.addClass('active')
-		} else {
-			itemTop.removeClass('active')
-			itemBody.removeClass('active')
-		}
-
-		$('.filter').addClass('active')
-		$('.filter-over').addClass('active')
-	})
-
+	// Открытие фильтра по кнопке (например, "Фильтры" на мобилке)
 	$('body').on('click', '.prod-catalog__filter', function() {
-		$('.filter').addClass('active')
-		$('.filter-over').addClass('active')
+		$('.filter, .filter-over').addClass('active')
+		$('body').addClass('filter-hidden')
 	})
 
-	$('.filter-over').on('click', function() {
-		$('[data-price-item]').removeClass('active')
-		$('[data-color-item]').removeClass('active')
-		$('.filter__body').removeClass('active')
-		$('.filter__top').removeClass('active')
-		$(this).removeClass('active')
-		$('.filter').removeClass('active')
-	})
+	// Закрытие фильтра по клику вне
+	$('.filter-over').on('click', closeFilter)
+	$('.filter__head--close').on('click', closeFilter)
 
-	$('.filter__head--close').on('click', function() {
-		$('.filter').removeClass('active')
-		$('[data-price-item]').removeClass('active')
-		$('[data-color-item]').removeClass('active')
-		$('.filter__body').removeClass('active')
-		$('.filter__top').removeClass('active')
-		$('.filter-over').removeClass('active')
-	})
+	function closeFilter() {
+		$('[data-price-item], [data-color-item]').removeClass('active')
+		$('.filter__body, .filter__top').removeClass('active')
+		$('.filter, .filter-over').removeClass('active')
+		$('body').removeClass('filter-hidden')
+	}
 
 	$('.prod-catalog__list--head').on('click', function() {
 		$(this).next().toggleClass('active')
@@ -770,8 +745,6 @@ $(document).ready(function() {
 		}
 	})
 
-
-
 	$('.radio').change(function() {
 		const check = $(this).prop('checked')
 		const parent = $(this).closest('.radio-parent')
@@ -781,7 +754,6 @@ $(document).ready(function() {
 			$(parent).addClass('checked')
 		}
 	})
-
 
 	// const serf = new Swiper('.sertif__container', {
 	// 	slidesPerView: 1,
