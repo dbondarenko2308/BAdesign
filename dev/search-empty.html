@@ -1,0 +1,22 @@
+@@include('components/header/template-black.html',{"title": 'Результаты поиска'})
+@@include('components/elements/breadcrumbs/template.html',{ list: ['<a href="index.html">Главная</a>' ], 'page': 'Результаты поиска', 'title': true, })
+
+
+
+<div class="search">
+
+  <div class="container">
+    <div class="search__text">
+     По запросу “люстра” ничего не найдено
+    
+    </div>
+    
+  </div>
+  
+</div>
+
+<div class="search-slider">
+  @@include('components/blocks/product-recommend/template.html',{})
+</div>
+
+@@include('components/footer/template.html',{})

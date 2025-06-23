@@ -448,6 +448,21 @@
         }
       }
     }
+
+    &--black {
+      &.active {
+        svg {
+          path {
+            stroke: #333;
+          }
+        }
+
+        .header__like--number {
+          background: #333;
+          color: #fff;
+        }
+      }
+    }
   }
 
   &__basket {
@@ -495,6 +510,21 @@
       svg {
         path {
           stroke: rgba(214, 214, 214, 1);
+        }
+      }
+    }
+
+    &--black {
+      &.active {
+        svg {
+          path {
+            stroke: #333;
+          }
+        }
+
+        .header__basket--number {
+          background: #333;
+          color: #fff;
         }
       }
     }

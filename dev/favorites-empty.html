@@ -1,0 +1,21 @@
+@@include('components/header/template-black.html',{"title": 'Избранное'})
+@@include('components/elements/breadcrumbs/template.html',{ list: ['<a href="index.html">Главная</a>' ], 'page': 'Избранное', 'title': false, })
+
+
+<div class="fav-empty">
+  <div class="container">
+    <div class="fav-empty__inner">
+
+
+      <h2 class="fav-empty__title elem-title title">Избранное</h2>
+
+      <div class="fav-empty__text">Вы пока ничего не добавили в избранное. Посмотрите диваны, кровати, кресла и стулья в нашем каталоге</div>
+
+      <a href="#" class="fav-empty__btn btn btn-red">Перейти В каталог</a>
+    </div>
+  </div>
+</div>
+
+
+
+@@include('components/footer/template.html',{})
