@@ -1,0 +1,587 @@
+@use '../../../style/scss/variables.scss' as *;
+
+.order {
+  margin-bottom: 130px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 70px;
+  }
+
+  .btn-white {
+    border: 1px solid #333;
+    text-transform: uppercase;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 537px;
+    grid-gap: 5px;
+
+    @media only screen and (max-width: 1300px) {
+      grid-template-columns: 1fr 390px;
+    }
+
+    @media only screen and (max-width: 991px) {
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+  }
+
+  &-sidebar {
+    background: $lgray;
+    height: fit-content;
+    padding: 40px;
+
+    @media only screen and (max-width: 1300px) {
+      padding: 20px;
+    }
+
+    .checkbox__text {
+      a {
+        color: #333;
+      }
+    }
+
+    &__top {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $gray;
+    }
+
+    &__calc {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 24px;
+      margin-bottom: 10px;
+
+      @media only screen and (max-width: 991px) {
+        font-size: 18px;
+      }
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    &__dost {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+      color: $dgray;
+
+      @media only screen and (max-width: 991px) {
+        font-size: 18px;
+      }
+    }
+
+    &__price {
+      padding: 30px 0;
+      border-bottom: 1px solid $gray;
+
+      @media only screen and (max-width: 991px) {
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      span {
+        font-size: 20px;
+        color: $dgray;
+
+        @media only screen and (max-width: 991px) {
+          font-size: 18px;
+        }
+      }
+
+      p {
+        font-size: 46px;
+        font-weight: 900;
+        margin-top: 5px;
+        line-height: 1;
+
+        @media only screen and (max-width: 991px) {
+          font-size: 24px;
+        }
+      }
+    }
+
+    &__ras {
+      padding: 30px 0;
+      border-bottom: 1px solid $gray;
+      margin-bottom: 30px;
+
+      @media only screen and (max-width: 991px) {
+        padding: 20px 0;
+        margin-bottom: 20px;
+      }
+
+      .checkbox {
+        align-items: center;
+      }
+
+      .checkbox__text {
+        font-size: 20px;
+
+        @media only screen and (max-width: 991px) {
+          font-size: 18px;
+        }
+
+        a {
+          border-bottom: 1px dashed #333;
+        }
+      }
+    }
+
+    &__btn {
+      max-width: 100%;
+      width: 100%;
+      font-size: 16px;
+
+      margin-bottom: 15px;
+    }
+
+    &__foot {
+      .checkbox {
+        align-items: flex-start;
+      }
+      .checkbox__text {
+        font-size: 16px;
+        a {
+          color: $red;
+        }
+      }
+    }
+  }
+
+  &__item {
+    margin-bottom: 5px;
+    padding: 40px;
+    border: 1px solid $gray;
+
+    @media only screen and (max-width: 991px) {
+      padding: 20px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.active {
+      .order__choose {
+        display: none;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+
+    @media only screen and (max-width: 991px) {
+      font-size: 18px;
+    }
+  }
+
+  &__choose {
+    color: $red;
+    cursor: pointer;
+  }
+
+  &__body {
+    margin-top: 15px;
+
+
+
+    &.active {
+      margin-top: 30px;
+
+      @media only screen and (max-width: 991px) {
+        margin-top: 20px;
+      }
+
+
+      .order__delivery {
+        display: none;
+      }
+      .order__pay {
+        display: none;
+      }
+      .order__dostavka {
+        display: none;
+      }
+    }
+  }
+
+  &-zak {
+    .basket-popup {
+      &__mobile {
+        display: none;
+
+        @media only screen and (max-width: 991px) {
+          display: block;
+
+          .basket-popup__head {
+            display: flex;
+          }
+
+          .basket-popup__art {
+            display: flex;
+          }
+        }
+      }
+
+      &__item {
+        grid-template-columns: 219px 1fr;
+        padding-bottom: 20px;
+        padding: 0;
+        border: 0;
+
+        @media only screen and (max-width: 991px) {
+          grid-template-columns: 79px 1fr;
+          align-items: flex-start;
+        }
+      }
+
+      &__info {
+        @media only screen and (max-width: 991px) {
+          grid-column: span 2;
+        }
+      }
+
+      &__img {
+        height: 219px;
+        width: 100%;
+
+        @media only screen and (max-width: 991px) {
+          height: 79px;
+        }
+      }
+
+      &__form {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-top: 30px;
+        justify-content: flex-start;
+
+        @media only screen and (max-width: 991px) {
+          justify-content: space-between;
+          margin-top: 20px;
+        }
+      }
+
+      &__head {
+        @media only screen and (max-width: 991px) {
+          display: none;
+        }
+        span {
+          font-size: 20px;
+
+          @media only screen and (max-width: 991px) {
+            font-size: 18px;
+          }
+        }
+      }
+
+      &__art {
+        font-size: 14px;
+
+        @media only screen and (max-width: 991px) {
+          display: none;
+          font-size: 12px;
+        }
+      }
+
+      &__text {
+        p {
+          font-size: 16px;
+        }
+      }
+
+      &__sum {
+        font-size: 20px;
+      }
+    }
+
+    &__delete {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px;
+      background: $lgray;
+    }
+
+    &__close {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &__item {
+      padding: 20px 0;
+      border-bottom: 1px solid $gray;
+
+      &:first-child {
+        border-top: 1px solid $gray;
+      }
+
+      &:last-child {
+        margin-bottom: 30px;
+      }
+    }
+
+    &__info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      a {
+        color: $red;
+      }
+    }
+
+    &__btn {
+      max-width: 114px;
+      justify-content: center;
+      margin-left: auto;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &-delivery {
+    &__radios {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      @media only screen and (max-width: 991px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .radio {
+        &__inner {
+          gap: 10px;
+        }
+
+        &__text {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &__head {
+      margin-bottom: 15px;
+
+      span {
+        font-size: 20px;
+
+        @media only screen and (max-width: 991px) {
+          font-size: 18px;
+        }
+      }
+
+      p {
+        margin-top: 15px;
+        color: $dgray;
+      }
+    }
+
+    &__label {
+      .field {
+        margin-bottom: 0;
+      }
+      input {
+        color: #333;
+      }
+    }
+
+    &__items {
+      margin-top: 30px;
+
+      @media only screen and (max-width: 991px) {
+        margin-top: 20px;
+      }
+    }
+
+    &__btn {
+      max-width: 114px;
+      width: 114px;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    &__btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 10px;
+
+      @media only screen and (max-width: 991px) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &-dostavka {
+    &__head {
+      margin-bottom: 15px;
+      p {
+        font-size: 20px;
+
+        @media only screen and (max-width: 991px) {
+          font-size: 18px;
+        }
+      }
+
+      span {
+        color: $dgray;
+        display: block;
+        margin-top: 10px;
+      }
+    }
+
+    &__btn {
+      max-width: 114px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    &__radios {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      @media only screen and (max-width: 1300px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .radio-parent {
+        padding: 10px 14px;
+        border: 1px solid $gray;
+        display: block;
+        max-width: 248px;
+
+        @media only screen and (max-width: 1300px) {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        &.checked {
+          border: 1px solid $red;
+        }
+
+        .radio {
+          &__inner {
+            align-items: flex-start;
+            gap: 10px;
+          }
+
+          &__text {
+            p {
+              font-size: 16px;
+            }
+
+            b {
+              font-size: 14px;
+              font-weight: 400;
+              color: $dgray;
+            }
+          }
+        }
+      }
+    }
+
+    &__btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 10px;
+
+      @media only screen and (max-width: 991px) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &-pay {
+    .radio__inner {
+      gap: 10px;
+    }
+
+    &__btn {
+      max-width: 114px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    &__btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 10px;
+
+      @media only screen and (max-width: 991px) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &-buy {
+    .field {
+      margin-bottom: 15px;
+      input {
+        color: #333;
+      }
+    }
+
+    &__top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 16px;
+
+      @media only screen and (max-width: 991px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__btn {
+      max-width: 114px;
+      margin-top: 30px;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 140px;
+        margin-top: 20px;
+      }
+    }
+  }
+
+
+  &__delivery {
+
+
+    &--item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 5px;
+      color: $dgray;
+    }
+  }
+}

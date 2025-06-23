@@ -471,7 +471,7 @@ $(document).ready(function() {
 		})
 	}
 
-	$('body').on('click', '.filter__top', function() {
+	$('.filter__top').on('click', function() {
 		$(this).toggleClass('active')
 		$(this).next().toggleClass('active')
 	})
@@ -662,7 +662,7 @@ $(document).ready(function() {
 		closePopup('[data-popup-obiv]')
 	})
 
-		$('[data-basket]').on('click', function(e) {
+	$('[data-basket]').on('click', function(e) {
 		e.stopPropagation()
 		openPopup('[data-popup-basket]')
 	})
@@ -671,7 +671,6 @@ $(document).ready(function() {
 		e.stopPropagation()
 		closePopup('[data-popup-basket]')
 	})
-
 
 	$('[data-opora]').on('click', function(e) {
 		e.stopPropagation()
@@ -770,6 +769,19 @@ $(document).ready(function() {
 			$(this).val(1)
 		}
 	})
+
+
+
+	$('.radio').change(function() {
+		const check = $(this).prop('checked')
+		const parent = $(this).closest('.radio-parent')
+
+		if (check) {
+			$('.radio-parent').removeClass('checked')
+			$(parent).addClass('checked')
+		}
+	})
+
 
 	// const serf = new Swiper('.sertif__container', {
 	// 	slidesPerView: 1,

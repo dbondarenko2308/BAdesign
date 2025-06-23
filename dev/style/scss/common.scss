@@ -43,7 +43,6 @@
 }
 
 button,
-input,
 textarea {
   appearance: none;
   -webkit-appearance: none;
@@ -93,11 +92,10 @@ body {
     }
   }
 
-
-   &.hidden-popup {
+  &.hidden-popup {
     overflow: hidden;
     padding-right: 10px;
-    
+
     &:before {
       content: '';
       display: block;
@@ -159,6 +157,81 @@ ul {
     width: 100%;
     padding: 0 15px;
   }
+}
+
+.radio-parent {
+  input {
+    appearance: none;
+  }
+}
+
+.radio {
+  cursor: pointer;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &-parent {
+  }
+}
+
+.radio.disabled {
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
+.radio:hover .radio__inner span {
+  border: 1px solid #dd5b12;
+}
+
+.radio:hover .radio__text {
+  color: #dd5b12;
+}
+
+.radio__inner span {
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  display: block;
+  cursor: pointer;
+  border: 1px solid $red;
+  box-sizing: border-box;
+  border-radius: 50%;
+  position: relative;
+  transition: 300ms;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.radio__inner span::before {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $red;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  opacity: 0;
+  transition: 300ms;
+  visibility: hidden;
+}
+
+.radio__inner input {
+  display: none;
+}
+
+.radio__inner input:checked + span {
+  border: 1px solid #dd5b12;
+}
+
+.radio__inner input:checked + span::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 .wrapper {
