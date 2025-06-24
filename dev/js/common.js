@@ -614,18 +614,42 @@ $(document).ready(function() {
 		})
 	})
 
+	let popupZIndex = 1000
+
+	// Открытие попапа
 	function openPopup(selector) {
-		$('.popup').removeClass('active')
-		$(selector).addClass('active')
+		const $popup = $(selector)
+		popupZIndex++
+		$popup.css('z-index', popupZIndex).addClass('active')
 		$('body').addClass('hidden-popup')
 	}
 
+	// Закрытие конкретного попапа
 	function closePopup(selector) {
-		$(selector).removeClass('active')
+		const $popup = $(selector)
+		$popup.removeClass('active').css('z-index', '')
+
+		// Проверяем, есть ли ещё активные попапы
 		if ($('.popup.active').length === 0) {
 			$('body').removeClass('hidden-popup')
 		}
 	}
+
+	// Клик вне попапа — закрывает только верхний активный
+	$(document).on('click', function() {
+		const $topPopup = $('.popup.active').last()
+		if ($topPopup.length) {
+			$topPopup.removeClass('active').css('z-index', '')
+			if ($('.popup.active').length === 1) {
+				$('body').removeClass('hidden-popup')
+			}
+		}
+	})
+
+	// Предотвращаем закрытие при клике внутри попапа
+	$('.popup').on('click', function(e) {
+		e.stopPropagation()
+	})
 
 	$('[data-otbivka]').on('click', function(e) {
 		e.stopPropagation()
@@ -659,7 +683,6 @@ $(document).ready(function() {
 
 	$('[data-zamsh-item]').on('click', function(e) {
 		e.stopPropagation()
-		closePopup('[data-popup-obiv]')
 		openPopup('.popup-rec')
 	})
 
@@ -686,7 +709,7 @@ $(document).ready(function() {
 
 	$('[data-card-open]').on('click', function(e) {
 		e.stopPropagation()
-		closePopup('.popup-complect')
+
 		openPopup('.popup-cards')
 	})
 
@@ -701,10 +724,6 @@ $(document).ready(function() {
 		closePopup('.popup-cards')
 	})
 
-	$('.basket-popup, .popup').on('click', function(e) {
-		e.stopPropagation()
-	})
-
 	$('[data-raz]').on('click', function(e) {
 		e.stopPropagation()
 		openPopup('.popup-raz')
@@ -715,34 +734,51 @@ $(document).ready(function() {
 		closePopup('.popup-raz')
 	})
 
-	$(document).on('click', function() {
-		$('.popup').removeClass('active')
-		$('body').removeClass('hidden-popup')
-	})
+	const $inputs = $('.basket-popup__counter input')
+	const $minusButtons = $('.basket-popup__counter--minus')
+	const $plusButtons = $('.basket-popup__counter--plus')
 
-	const $input = $('.basket-popup__counter input')
-	const $minus = $('.basket-popup__counter--minus')
-	const $plus = $('.basket-popup__counter--plus')
+	function updateMinusState($input) {
+		const value = parseInt($input.val(), 10)
+		const $minus = $input.siblings('.basket-popup__counter--minus')
 
-	$minus.on('click', function() {
-		let $currentInput = $(this).siblings('input')
-		let value = parseInt($currentInput.val(), 10)
+		if (value <= 1 || isNaN(value)) {
+			$minus.addClass('disabled')
+		} else {
+			$minus.removeClass('disabled')
+		}
+	}
+
+	$minusButtons.on('click', function() {
+		const $input = $(this).siblings('input')
+		let value = parseInt($input.val(), 10)
+
 		if (value > 1) {
-			$currentInput.val(value - 1)
+			$input.val(value - 1)
+			updateMinusState($input)
 		}
 	})
 
-	$plus.on('click', function() {
-		let $currentInput = $(this).siblings('input')
-		let value = parseInt($currentInput.val(), 10)
-		$currentInput.val(value + 1)
+	$plusButtons.on('click', function() {
+		const $input = $(this).siblings('input')
+		let value = parseInt($input.val(), 10)
+
+		$input.val(value + 1)
+		updateMinusState($input)
 	})
 
-	$('.basket-popup__counter input').on('input blur', function() {
+	$inputs.on('input blur', function() {
 		let value = parseInt($(this).val(), 10)
+
 		if (isNaN(value) || value < 1) {
 			$(this).val(1)
 		}
+		updateMinusState($(this))
+	})
+
+	// Инициализация при загрузке
+	$inputs.each(function() {
+		updateMinusState($(this))
 	})
 
 	$('.radio').change(function() {
@@ -754,6 +790,32 @@ $(document).ready(function() {
 			$(parent).addClass('checked')
 		}
 	})
+
+	$('.popup-obiv__item').on('click', function() {
+		var parent = $(this).closest('.popup-obiv__items')
+
+		var item = parent.find('.popup-obiv__item')
+
+		item.removeClass('active')
+		$(this).toggleClass('active')
+	})
+
+	if ($(window).width() > 991) {
+		$('.header__search svg').on('click', function() {
+			$('.header__search').toggleClass('active')
+		})
+	} else {
+		$('.header__search').on('click', function() {
+			$('.search-header').addClass('active')
+		})
+	}
+
+
+	$('.search-header__close').on('click', function() {
+		$('.search-header').removeClass('active')
+	})
+
+	
 
 	// const serf = new Swiper('.sertif__container', {
 	// 	slidesPerView: 1,

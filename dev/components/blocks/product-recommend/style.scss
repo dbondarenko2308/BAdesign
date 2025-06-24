@@ -68,7 +68,16 @@
 
         svg {
           path {
+            transition: 300ms;
             fill: #bc4242;
+          }
+        }
+
+        &:hover {
+          svg {
+            path {
+              opacity: 0.7;
+            }
           }
         }
       }

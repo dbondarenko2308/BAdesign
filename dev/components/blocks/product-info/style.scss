@@ -137,6 +137,23 @@
       background: #f3f3f3;
       color: #bc4242;
 
+      svg {
+        path {
+          transition: 300ms;
+        }
+      }
+
+      &:hover {
+        background: #bc4242;
+        color: #fff;
+
+        svg {
+          path {
+            stroke: #fff;
+          }
+        }
+      }
+
       @media only screen and (max-width: 991px) {
         width: 100%;
         display: flex;
@@ -150,7 +167,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: flex-start;
-    gap: 120px;
+    gap: 15px 120px;
 
     @media only screen and (max-width: 991px) {
       grid-template-columns: 1fr;
@@ -168,6 +185,10 @@
     justify-content: space-between;
     margin-bottom: 15px;
     position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &:before {
       content: '';

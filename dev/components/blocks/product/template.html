@@ -180,7 +180,7 @@
           <span class="product__label">Габаритная ширина</span>
 
           <ul class="product__gabar--list">
-            <li>190</li>
+            <li class="active">190</li>
             <li>202</li>
             <li>212</li>
             <li>220</li>
@@ -190,7 +190,7 @@
         <div class="product__meh">
           <div class="product__label">Механизм</div>
           <ul class="product__meh--list">
-            <li>Без механизма</li>
+            <li class="active">Без механизма</li>
             <li>Вперед-выкатной</li>
             <li>Шагающая еврокнижка</li>
             <li>Еще один механизм</li>
@@ -227,7 +227,48 @@
           <div class="product__foot--info">
             <div class="product__price">190 000 ₽</div>
 
-            <a href="#" class="product__btn btn btn-red">Добавить в корзину</a>
+            <a href="#" class="product__btn btn btn-red" style="display: none;">Добавить в корзину</a>
+
+            <div class="product__basket--info">
+              <div class="basket-popup__counter">
+                <div class="basket-popup__counter--minus disabled" >
+                  <svg
+                    width="16"
+                    height="2"
+                    viewBox="0 0 16 2"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.7873 1H1.21094"
+                      stroke="#333333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <input type="text" value="1" />
+                <div class="basket-popup__counter--plus">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.7874 8H1.21094M7.99918 1.21176V14.7882"
+                      stroke="#BC4242"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <a href="#" class="product__btn btn btn-red"
+                >в корзине</a
+              >
+            </div>
           </div>
 
           <div class="product__raz" data-raz>

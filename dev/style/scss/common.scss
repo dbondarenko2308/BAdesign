@@ -254,6 +254,7 @@ ul {
 .main {
   flex-grow: 10;
   width: 100%;
+  margin-top: 10px;
 }
 
 .btn {
@@ -408,6 +409,12 @@ ul {
       color: #858585;
     }
   }
+
+  &-error {
+    input {
+      color: $red !important;
+    }
+  }
 }
 
 .down-up {
@@ -489,7 +496,7 @@ ul {
   @media only screen and (max-width: 991px) {
     margin-top: 0;
     height: 798px;
-    margin-top: -89px;
+    margin-top: -100px;
   }
 }
 
@@ -609,7 +616,6 @@ video {
 // fav-empty
 
 .fav-empty {
-
   margin-top: 146px;
   margin-bottom: 325px;
 
@@ -617,9 +623,6 @@ video {
     margin-top: 178px;
     margin-bottom: 279px;
   }
-
-
-
 
   &__inner {
     max-width: 878px;
@@ -637,7 +640,6 @@ video {
       margin-bottom: 20px;
     }
   }
-
 
   &__text {
     color: $dgray;
@@ -659,15 +661,11 @@ video {
       max-width: 100%;
     }
   }
-
-
 }
-
 
 // Search
 
 .search {
-
   &__text {
     font-size: 24px;
     font-weight: 600;
@@ -677,7 +675,6 @@ video {
       font-size: 18px;
       margin-bottom: 20px;
     }
-
 
     span {
       color: $dgray;
@@ -690,6 +687,88 @@ video {
 
     @media only screen and (max-width: 991px) {
       margin-bottom: 70px;
+    }
+  }
+}
+
+// Search-header
+
+.search-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 15px;
+
+  display: none;
+
+
+  @media only screen and (max-width: 991px) {
+    &.active {
+      display: block;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      svg {
+        path {
+          stroke: $red;
+        }
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $gray;
+    margin-top: 15px;
+    padding-bottom: 3px;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    .header-search-top {
+      display: block;
+      width: 100%;
+
+      input {
+        color: #333;
+        min-width: initial;
+        width: 100%;
+
+        &::-webkit-input-placeholder {
+          color: #333;
+          opacity: 0.7;
+        }
+        &:-moz-placeholder {
+          color: #333;
+          opacity: 0.7;
+        }
+        &::-moz-placeholder {
+          color: #333;
+          opacity: 0.7;
+        }
+        &:-ms-input-placeholder {
+          color: #333;
+          opacity: 0.7;
+        }
+      }
     }
   }
 }

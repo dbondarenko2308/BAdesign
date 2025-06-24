@@ -1,6 +1,8 @@
 .prod-catalog {
   margin-bottom: 30px;
 
+  margin-bottom: 20px; 
+
   &__top {
     display: flex;
     align-items: center;
@@ -19,6 +21,20 @@
     border: 1px solid #858585;
     padding: 11px;
     border-right: 0;
+    transition: 300ms;
+
+
+    &:hover {
+      background: #BC4242;
+      color: #fff;
+     
+
+      svg {
+        path {
+          stroke: #fff;
+        }
+      }
+    }
 
     @media only screen and (max-width: 991px) {
       display: none;
@@ -57,7 +73,7 @@
         display: block;
         position: absolute;
         background: #fff;
-        border: 1px solid #333;
+        border: 1px solid #858585;
         padding: 10px;
         z-index: 10;
         top: 120%;
@@ -72,6 +88,11 @@
         margin-bottom: 5px;
         cursor: pointer;
         transition: 300ms;
+
+        &.disabled {
+          color: #858585;
+        }
+
         &:hover {
           color: #BC4242;
         }
@@ -147,12 +168,12 @@
 
     &::-webkit-scrollbar {
       background: #d6d6d6;
-      width: 10px;
+      width: 8px;
     }
 
     &::-webkit-scrollbar-thumb {
       background: #858585;
-      width: 6px;
+      width: 8px;
     }
   }
 

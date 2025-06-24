@@ -208,6 +208,16 @@
 
     &__item {
       cursor: pointer;
+      transition: 300ms;
+
+      &:hover {
+        .popup-complect {
+          &__name,
+          &__price {
+            color: $red;
+          }
+        }
+      }
     }
 
     &__img {
@@ -228,11 +238,13 @@
 
     &__name {
       margin: 10px 0 5px;
+      transition: 300ms;
     }
 
     &__price {
       font-size: 14px;
       color: $dgray;
+      transition: 300ms;
     }
   }
 
@@ -251,6 +263,10 @@
       color: $red;
       margin-bottom: 30px;
       margin-top: 30px;
+
+      &:hover {
+        opacity: 0.7;
+      }
     }
 
     &__items {
@@ -387,11 +403,18 @@
     &__items {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 5px;
+      grid-gap: 3px;
     }
 
     &__item {
       position: relative;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: 300ms;
+
+      &.active {
+        border: 2px solid $red;
+      }
     }
 
     &__text {
@@ -509,9 +532,26 @@
       grid-gap: 15px;
     }
 
+    &.delete {
+      display: block;
+    }
+
     &:first-child {
       margin-top: 0;
     }
+
+    &:last-child {
+      border-bottom: 1px solid $gray;
+      padding-bottom: 15px;
+    }
+  }
+
+  &__del {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: $lgray;
   }
 
   &__img {
@@ -547,6 +587,14 @@
   &__delete {
     flex-shrink: 0;
     cursor: pointer;
+
+    &:hover {
+      svg {
+        path {
+          stroke: $red;
+        }
+      }
+    }
   }
 
   &__art {
@@ -599,6 +647,22 @@
       background: $lgray;
       cursor: pointer;
 
+      svg {
+        path {
+          transition: 300ms;
+          stroke: $red;
+        }
+      }
+
+      &:hover {
+        svg {
+          path {
+            transition: 300ms;
+            stroke: #333;
+          }
+        }
+      }
+
       &.disabled {
         pointer-events: none;
         svg {
@@ -639,6 +703,54 @@
           font-size: 18px;
         }
       }
+    }
+  }
+}
+
+.basket-popup-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+
+    &:hover {
+      svg {
+        path {
+          stroke: $red;
+        }
+      }
+    }
+  }
+
+  &__info {
+    padding-bottom: 100px;
+
+    @media only screen and (max-width: 991px) {
+      padding-bottom: 0;
+    }
+
+    p {
+      font-size: 46px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 900;
+
+      @media only screen and (max-width: 991px) {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+    }
+
+    span {
+      color: $dgray;
+      text-align: center;
+      display: block;
     }
   }
 }

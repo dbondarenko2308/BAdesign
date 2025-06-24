@@ -26,6 +26,10 @@
       .prod-cards__name {
         color: #bc4242;
       }
+
+       .prod-cards__price {
+        color: #bc4242;
+      }
     }
   }
 
@@ -90,9 +94,11 @@
     font-weight: 600;
     font-size: 24px;
     margin-top: 10px;
+    transition: 300ms;
 
     @media only screen and (max-width: 991px) {
       font-size: 18px;
+      margin-top: 5px;
     }
   }
 }
