@@ -384,6 +384,13 @@
     align-items: center;
     cursor: pointer;
 
+    @media only screen and (max-width: 991px) {
+      width: 100%;
+    }
+
+
+   
+
     &.active {
       border-bottom: 1px solid #fff;
       padding-bottom: 3px;
@@ -425,10 +432,20 @@
       }
     }
 
-    &:hover {
-      svg {
+    svg {
+      transition: 300ms;
+      &:hover {
         path {
           fill: rgba(214, 214, 214, 1);
+        }
+      }
+    }
+
+
+    >svg.loop {
+      &.active {
+        path {
+          fill: $red;
         }
       }
     }
@@ -601,6 +618,15 @@
 .header-search-top {
   transition: 300ms;
   display: none;
+  position: relative;
+
+
+  &.active {
+    .header-search-close {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
   input {
     border: 0;
@@ -625,6 +651,33 @@
     &:-ms-input-placeholder {
       color: #fff;
       opacity: 0.7;
+    }
+  }
+}
+
+.header-search-close {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+
+  svg {
+    path {
+      transition: 300ms;
+    }
+  }
+
+  &:hover {
+    svg {
+      path {
+        stroke: $red;
+      }
     }
   }
 }
