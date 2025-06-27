@@ -388,9 +388,6 @@
       width: 100%;
     }
 
-
-   
-
     &.active {
       border-bottom: 1px solid #fff;
       padding-bottom: 3px;
@@ -441,11 +438,12 @@
       }
     }
 
-
-    >svg.loop {
+    > svg.loop {
       &.active {
-        path {
-          fill: $red;
+        &:hover {
+          path {
+            fill: $red;
+          }
         }
       }
     }
@@ -620,7 +618,6 @@
   display: none;
   position: relative;
 
-
   &.active {
     .header-search-close {
       opacity: 1;
@@ -665,7 +662,6 @@
 
   opacity: 0;
   visibility: hidden;
-
 
   svg {
     path {
