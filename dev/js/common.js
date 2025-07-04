@@ -96,55 +96,90 @@ $(document).ready(function() {
 		}
 	})
 
-	var init8 = false
-	var swiper8
-	function swiperHow() {
-		if (window.innerWidth < 992) {
-			if (!init8) {
-				init8 = true
-				swiper8 = new Swiper('.main-adva__container', {
-					slidesPerView: 'auto',
-					spaceBetween: 5,
-					loop: false,
-					pagination: {
-						el: '.swiper-pagination',
-						clickable: true
-					}
-				})
-			}
-		} else if (init8) {
-			swiper8.destroy()
-			init8 = false
+
+		const contactsSwiper = new Swiper('.contacts__container', {
+		slidesPerView: 1,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		},
+		navigation: {
+			nextEl: '.contacts__next',
+			prevEl: '.contacts__prev'
 		}
+	})
+
+	const slidesCount = document.querySelectorAll(
+		'.mech-block__container .swiper-slide'
+	).length
+
+	const swiperMech = new Swiper('.mech-block__container', {
+		slidesPerView: 1,
+		loop: true,
+		loopedSlides: slidesCount,
+		spaceBetween: 5,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		},
+		navigation: {
+			nextEl: '.mech-block__next',
+			prevEl: '.mech-block__prev'
+		},
+		breakpoints: {
+			768: {
+				slidesPerView: 2,
+				loopedSlides: slidesCount
+			}
+		},
+		watchOverflow: true,
+		observer: true,
+		observeParents: true
+	})
+
+	const swiperConfigs = [
+		{ container: '.main-adva__container', slidesPerView: 'auto' },
+		{ container: '.product-info__container', slidesPerView: 1 },
+		{ container: '.adva-brand__container', slidesPerView: 'auto' },
+		{ container: '.tour-room__container', slidesPerView: 'auto' },
+		{ container: '.show-des__container', slidesPerView: 'auto' },
+		{ container: '.adva-des__container', slidesPerView: 'auto' },
+		{ container: '.yh-block__container', slidesPerView: 'auto' },
+		{ container: '.pr-block__container', slidesPerView: 'auto' },
+		{ container: '.mech-div__container', slidesPerView: 'auto' },
+		{ container: '.stat__container', slidesPerView: 'auto' }
+	]
+
+	const swipersNew = []
+
+	function initResponsiveSwipers() {
+		swiperConfigs.forEach((config, index) => {
+			const container = document.querySelector(config.container)
+			if (!container) return
+
+			if (window.innerWidth < 992) {
+				if (!swipersNew[index]) {
+					swipersNew[index] = new Swiper(config.container, {
+						slidesPerView: config.slidesPerView,
+						spaceBetween: 5,
+						loop: false,
+						pagination: {
+							el: `${config.container} .swiper-pagination`,
+							clickable: true
+						}
+					})
+				}
+			} else {
+				if (swipersNew[index]) {
+					swipersNew[index].destroy(true, true)
+					swipersNew[index] = null
+				}
+			}
+		})
 	}
 
-	swiperHow()
-	window.addEventListener('resize', swiperHow)
-
-	var init9 = false
-	var swiper9
-	function swiperProduct() {
-		if (window.innerWidth < 992) {
-			if (!init9) {
-				init9 = true
-				swiper9 = new Swiper('.product-info__container', {
-					slidesPerView: 1,
-					spaceBetween: 5,
-					loop: false,
-					pagination: {
-						el: '.swiper-pagination',
-						clickable: true
-					}
-				})
-			}
-		} else if (init9) {
-			swiper9.destroy()
-			init9 = false
-		}
-	}
-
-	swiperProduct()
-	window.addEventListener('resize', swiperProduct)
+	initResponsiveSwipers()
+	window.addEventListener('resize', initResponsiveSwipers)
 
 	const swipers = []
 	let currentIndex = 0
@@ -471,13 +506,11 @@ $(document).ready(function() {
 		})
 	}
 
-	// Переключение фильтра (открытие/закрытие одного блока)
 	$('.filter__top').on('click', function() {
 		$(this).toggleClass('active')
 		$(this).next('.filter__body').toggleClass('active')
 	})
 
-	// Универсальный обработчик для открытия фильтра по атрибуту
 	$('[data-price], [data-color]').on('click', function() {
 		const parent = $(this).closest('.prod-catalog__inner')
 		const isPrice = $(this).is('[data-price]')
@@ -495,13 +528,11 @@ $(document).ready(function() {
 		$('body').addClass('filter-hidden')
 	})
 
-	// Открытие фильтра по кнопке (например, "Фильтры" на мобилке)
 	$('body').on('click', '.prod-catalog__filter', function() {
 		$('.filter, .filter-over').addClass('active')
 		$('body').addClass('filter-hidden')
 	})
 
-	// Закрытие фильтра по клику вне
 	$('.filter-over').on('click', closeFilter)
 	$('.filter__head--close').on('click', closeFilter)
 
@@ -616,7 +647,6 @@ $(document).ready(function() {
 
 	let popupZIndex = 1000
 
-	// Открытие попапа
 	function openPopup(selector) {
 		const $popup = $(selector)
 		popupZIndex++
@@ -624,18 +654,15 @@ $(document).ready(function() {
 		$('body').addClass('hidden-popup')
 	}
 
-	// Закрытие конкретного попапа
 	function closePopup(selector) {
 		const $popup = $(selector)
 		$popup.removeClass('active').css('z-index', '')
 
-		// Проверяем, есть ли ещё активные попапы
 		if ($('.popup.active').length === 0) {
 			$('body').removeClass('hidden-popup')
 		}
 	}
 
-	// Клик вне попапа — закрывает только верхний активный
 	$(document).on('click', function() {
 		const $topPopup = $('.popup.active').last()
 		if ($topPopup.length) {
@@ -646,7 +673,6 @@ $(document).ready(function() {
 		}
 	})
 
-	// Предотвращаем закрытие при клике внутри попапа
 	$('.popup').on('click', function(e) {
 		e.stopPropagation()
 	})
@@ -776,7 +802,6 @@ $(document).ready(function() {
 		updateMinusState($(this))
 	})
 
-	// Инициализация при загрузке
 	$inputs.each(function() {
 		updateMinusState($(this))
 	})
@@ -840,125 +865,53 @@ $(document).ready(function() {
 		$('.loop').removeClass('active')
 	})
 
-	// const serf = new Swiper('.sertif__container', {
-	// 	slidesPerView: 1,
-	// 	pagination: {
-	// 		el: '.swiper-pagination',
-	// 		clickable: true
-	// 	},
+	$('[data-model-item]').on('click', function() {
+		if (!$(this).hasClass('active')) {
+			var index = $(this).index()
+			$(this).addClass('active').siblings().removeClass('active')
+			$('[data-model-items]').removeClass('active').eq(index).addClass('active')
+		}
+		return false
+	})
 
-	// 	breakpoints: {
-	// 		768: {
-	// 			slidesPerView: 2
-	// 		}
-	// 	}
-	// })
+	$('[data-port-item]').on('click', function() {
+		if (!$(this).hasClass('active')) {
+			var index = $(this).index()
+			$(this).addClass('active').siblings().removeClass('active')
+			$('[data-port-content]')
+				.removeClass('active')
+				.eq(index)
+				.addClass('active')
+		}
+		return false
+	})
 
-	// let $carousel = $('.carousel')
+	$('.faq-block__head').on('click', function() {
+		let $this = $(this)
+		let isActive = $this.hasClass('active')
 
-	// $carousel.slick({
-	// 	slidesToShow: 7,
-	// 	slidesToScroll: 1,
-	// 	autoplay: true,
-	// 	autoplaySpeed: 0,
-	// 	speed: 3000,
-	// 	cssEase: 'linear',
-	// 	infinite: true,
-	// 	arrows: false,
-	// 	centerMode: false,
-	// 	variableWidth: true
-	// })
+		$('.faq-block__head').removeClass('active')
+		$('.faq-block__body').removeClass('active')
+		$('.faq-block__item').removeClass('active')
 
-	// let $carouselnew = $('.carousel-rtl')
+		if (!isActive) {
+			$this.addClass('active')
+			$this.parent().addClass('active')
+			$this.next('.faq-block__body').addClass('active')
+		}
+	})
 
-	// $carouselnew.slick({
-	// 	slidesToShow: 7,
-	// 	slidesToScroll: 1,
-	// 	autoplay: true,
-	// 	autoplaySpeed: 0,
-	// 	speed: 3000,
-	// 	cssEase: 'linear',
-	// 	infinite: true,
-	// 	arrows: false,
-	// 	centerMode: false,
-	// 	variableWidth: true,
-	// 	rtl: true
-	// })
 
-	// $('.mask').each(function() {
-	// 	IMask(this, {
-	// 		mask: '+{7} (000) 000-00-00'
-	// 	})
-	// })
+		$('[data-contact-item]').on('click', function() {
+		if (!$(this).hasClass('active')) {
+			var index = $(this).index()
+			$(this).addClass('active').siblings().removeClass('active')
+			$('[data-contact-content]')
+				.removeClass('active')
+				.eq(index)
+				.addClass('active')
+		}
+		return false
+	})
 
-	// var amountScrolled = 200
-	// var amountScrolledNav = 25
-
-	// $(window).scroll(function() {
-	// 	if ($(window).scrollTop() > amountScrolled) {
-	// 		$('.down-up').addClass('show')
-	// 	} else {
-	// 		$('.down-up').removeClass('show')
-	// 	}
-	// })
-
-	// $('.down-up').click(function() {
-	// 	$('html, body').animate(
-	// 		{
-	// 			scrollTop: 0
-	// 		},
-	// 		800
-	// 	)
-	// 	return false
-	// })
-
-	// const abouts = new Swiper('.about-clients__container', {
-	// 	slidesPerView: 1,
-	// 	spaceBetween: 30,
-
-	// 	pagination: {
-	// 		el: '.swiper-pagination',
-	// 		clickable: true
-	// 	},
-	// 	navigation: {
-	// 		nextEl: '.about-clients__next',
-	// 		prevEl: '.about-clients__prev'
-	// 	},
-
-	// 	breakpoints: {
-	// 		768: {
-	// 			slidesPerView: 3
-	// 		},
-
-	// 		1250: {
-	// 			slidesPerView: 4
-	// 		}
-	// 	}
-	// })
-
-	// $('.faq-vacancy__head').on('click', function() {
-	// 	let $this = $(this).parent()
-	// 	let isActive = $this.hasClass('active')
-
-	// 	$('.faq-vacancy__item').removeClass('active')
-
-	// 	if (!isActive) {
-	// 		$this.addClass('active')
-	// 	}
-	// })
-
-	// $('.catalog-product__head').on('click', function() {
-	// 	$(this).toggleClass('active')
-	// 	$(this).next().toggleClass('active')
-	// })
-
-	// $('.contacts__item--head').on('click', function() {
-	// 	$(this).toggleClass('active')
-	// 	$(this).next().toggleClass('active')
-	// })
-
-	// $('.shem__top--item').on('click', function() {
-	// 	$('.shem__top--item').removeClass('active')
-	// 	$(this).toggleClass('active')
-	// })
 })

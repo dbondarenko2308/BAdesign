@@ -1,0 +1,57 @@
+.contacts-feed {
+  margin-bottom: 142px;
+
+  position: relative;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 70px;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url('/images/contacts-before.svg') 50% 50%;
+    width: 32%;
+    height: 519px;
+    left: 0;
+    background-size: cover;
+    top: 5px;
+
+    @media only screen and (max-width: 991px) {
+      display: none;
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url('/images/contacts-after.svg') 50% 50%;
+    width: 32%;
+    height: 519px;
+    right: 0;
+    background-size: cover;
+    left: auto;
+    top: 5px;
+
+    @media only screen and (max-width: 991px) {
+      display: none;
+    }
+  }
+
+  .modal__container {
+    max-width: 627px;
+    margin: 0 auto;
+    left: 0;
+    position: relative;
+    background: #fff;
+    padding: 0 20px;
+    z-index: 1;
+
+    @media only screen and (max-width: 991px) {
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+}

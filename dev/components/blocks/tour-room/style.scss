@@ -1,0 +1,66 @@
+.tour-room {
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    .swiper-pagination {
+      display: none;
+
+      @media only screen and (max-width: 991px) {
+        display: block;
+      }
+    }
+
+    @media only screen and (max-width: 991px) {
+      margin-right: -15px;
+      padding-bottom: 30px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+
+    @media only screen and (max-width: 991px) {
+      display: flex;
+      grid-gap: 0;
+    }
+  }
+
+  &__item {
+    height: 386px;
+    max-width: 326px;
+
+    @media only screen and (max-width: 991px) {
+      height: 382px;
+
+      max-width: 330px;
+    }
+
+    &:first-child {
+      max-width: 100%;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 330px;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-left: auto;
+    }
+
+    &:nth-child(3) {
+      margin-left: auto;
+    }
+
+    &:last-child {
+      max-width: 100%;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 330px;
+      }
+    }
+  }
+}

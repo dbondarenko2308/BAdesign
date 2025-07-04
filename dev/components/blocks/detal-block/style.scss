@@ -1,0 +1,143 @@
+.detal-port {
+  margin-bottom: 100px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 40px;
+  }
+
+  
+  &__img {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    height: 706px;
+
+
+    @media only screen and (max-width: 991px) {
+      height: 382px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+
+    @media only screen and (max-width: 991px) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
+
+    > span {
+      font-size: 24px;
+      display: block;
+      max-width: 620px;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 100%;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__label {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+
+    @media only screen and (max-width: 991px) {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      border-bottom: 1.6px dashed #858585;
+      left: 0;
+      bottom: 5px;
+    }
+
+    span {
+      color: #858585;
+      background: #fff;
+      position: relative;
+      padding-right: 5px;
+      z-index: 1;
+    }
+
+    p {
+      position: relative;
+      background: #fff;
+      padding-left: 5px;
+      z-index: 1;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    margin-top: 100px;
+
+    @media only screen and (max-width: 991px) {
+      grid-template-columns: 1fr;
+      margin-top: 40px;
+    }
+
+    &--item {
+      display: flex;
+      align-items: center;
+
+      &:first-child {
+        max-width: 326px;
+        height: 386px;
+
+        @media only screen and (max-width: 991px) {
+          height: 382px;
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+
+      &:last-child {
+        height: 658px;
+
+        @media only screen and (max-width: 991px) {
+          height: 382px;
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

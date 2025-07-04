@@ -57,11 +57,19 @@
     }
   }
 
-
   &__item {
     @media only screen and (max-width: 991px) {
       width: 163px;
       flex-shrink: 0;
+    }
+
+    &:hover {
+      color: $red;
+
+
+      .product-com__price {
+        color: $red;
+      }
     }
   }
 
@@ -100,6 +108,7 @@
   &__price {
     color: $dgray;
     font-size: 24px;
+    transition: 300ms;
 
     @media only screen and (max-width: 991px) {
       font-size: 14px;
@@ -116,7 +125,6 @@
     border: 1px solid $red;
     position: relative;
     overflow: hidden;
-
 
     @media only screen and (max-width: 991px) {
       height: 230px;

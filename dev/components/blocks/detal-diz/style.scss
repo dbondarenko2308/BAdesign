@@ -1,0 +1,76 @@
+.detal-diz {
+  margin-bottom: 100px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 40px;
+  }
+
+  &__top {
+    max-width: 989px;
+  }
+
+  .show-des {
+    &__items {
+      @media only screen and (max-width: 991px) {
+        grid-template-columns: 1fr;
+        display: grid;
+        grid-gap: 5px;
+      }
+    }
+
+    &__item {
+      @media only screen and (max-width: 991px) {
+       
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+
+
+        .main-adva__img {
+          height: 382px;
+        }
+
+        &:first-child {
+          max-width: 100%;
+          height: auto;
+        }
+
+
+        &:last-child {
+          max-width: 100%;
+          height: fit-content;
+        }
+      }
+
+      
+    }
+
+    &__desktop {
+      display: block;
+
+      @media only screen and (max-width: 991px) {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    max-width: 658px;
+
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__text {
+    color: #858585;
+    margin-bottom: 30px;
+
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 20px;
+    }
+  }
+}

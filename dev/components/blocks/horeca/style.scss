@@ -1,0 +1,102 @@
+.horeca {
+  margin-bottom: 170px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 70px;
+  }
+
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+
+    align-items: flex-start;
+
+
+    @media only screen and (max-width: 991px) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
+  }
+
+  &__img {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    height: 450px;
+    margin-bottom: 30px;
+
+    @media only screen and (max-width: 991px) {
+      height: 382px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    &--top {
+      span {
+        font-size: 24px;
+      }
+
+      p {
+        color: #858585;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &__content {
+    span {
+      font-size: 24px;
+    }
+
+    p {
+      color: #858585;
+      margin-top: 10px;
+
+      a {
+        color: #BC4242;
+      }
+    }
+  }
+
+  &__images {
+    &--item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      height: 450px;
+
+      &:last-child {
+        height: 850px;
+      }
+
+      @media only screen and (max-width: 991px) {
+        height: 382px;
+
+        &:last-child {
+          height: 382px;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

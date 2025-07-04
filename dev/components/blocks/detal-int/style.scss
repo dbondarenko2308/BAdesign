@@ -1,0 +1,49 @@
+
+
+.detal-int {
+  margin-bottom: 170px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 70px;
+  }
+
+  &__inner {
+    .detal-gar__top {
+      max-width: 658px;
+
+      @media only screen and (max-width: 991px) {
+        max-width: 100%;
+      }
+    }
+  }
+
+
+  .tour-room {
+
+    &__container {
+      @media only screen and (max-width: 991px) {
+        padding-right: 15px;
+      }
+    }
+
+    &__item {
+      &:nth-child(6) {
+        max-width: 100%;
+
+        @media only screen and (max-width: 991px) {
+          max-width: 330px;
+        }
+      }
+
+      &:nth-child(7) {
+        margin-left: auto;
+      }
+
+
+      &:last-child {
+        max-width: 326px;
+        margin-left: auto;
+      }
+    }
+  }
+}

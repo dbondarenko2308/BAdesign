@@ -18,6 +18,50 @@
     }
   }
 
+  &-form {
+    .feed__inner {
+      background: url('/images/bg-new-feed.png') 50% 50% no-repeat;
+      background-size: cover;
+
+      @media only screen and (max-width: 991px) {
+        background: url('/images/feed-bg.png') 80% 80% no-repeat;
+        background-size: cover;
+      }
+    }
+
+    .feed__info {
+      max-width: 627px;
+    }
+
+    .feed__btn {
+      max-width: 100%;
+    }
+  }
+
+  &__labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    margin-bottom: 15px;
+
+    @media only screen and (max-width: 991px) {
+      grid-template-columns: 1fr;
+    }
+
+    .field {
+      margin-bottom: 0;
+      max-width: 100% !important;
+
+      &.wide {
+        grid-column: span 2;
+
+        @media only screen and (max-width: 991px) {
+          grid-column: span 1;
+        }
+      }
+    }
+  }
+
   &__info {
     max-width: 545px;
     color: #fff;

@@ -95,3 +95,32 @@
     }
   }
 }
+
+.main-rev-card {
+  .main-rev__top {
+    margin-bottom: 40px;
+    margin-top: 0;
+
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 20px;
+    }
+  }
+  .main-rev__title {
+    font-weight: 900;
+    font-size: 46px;
+
+    @media only screen and (max-width: 991px) {
+      font-size: 24px;
+    }
+  }
+
+  .main-rev__item {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .main-rev__img {
+    height: 330px;
+  }
+}
