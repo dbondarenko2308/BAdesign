@@ -52,7 +52,7 @@
 }
 
 .main-des {
-  margin-bottom: 170px;
+  margin-bottom: 130px;
 
   @media only screen and (max-width: 991px) {
     margin-bottom: 70px;
@@ -162,6 +162,10 @@
     cursor: pointer;
     white-space: nowrap;
 
+    &:hover {
+      color: #bc4242;
+    }
+
     @media only screen and (max-width: 991px) {
       font-size: 14px;
     }
@@ -203,6 +207,7 @@
 
       @media only screen and (max-width: 991px) {
         margin-bottom: 30px;
+        grid-gap: 25px 5px;
       }
 
     }

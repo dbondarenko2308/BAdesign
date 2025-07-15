@@ -1,5 +1,5 @@
 .tour-model {
-  margin: 170px 0;
+  margin: 130px 0;
 
   @media only screen and (max-width: 991px) {
     margin: 70px 0;
@@ -69,6 +69,10 @@
         color: #858585;
         cursor: pointer;
 
+        &:hover {
+          color: #BC4242;
+        }
+
         @media only screen and (max-width: 991px) {
           font-size: 14px;
           white-space: nowrap;;
@@ -102,6 +106,7 @@
 
     @media only screen and (max-width: 991px) {
       grid-template-columns: 1fr 1fr;
+      grid-gap: 20px 5px;
     }
   }
 

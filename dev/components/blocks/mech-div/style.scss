@@ -1,5 +1,5 @@
 .mech-div {
-  margin-bottom: 170px;
+  margin-bottom: 130px;
 
   @media only screen and (max-width: 991px) {
     margin-bottom: 70px;
@@ -22,7 +22,6 @@
       }
     }
 
-
     @media only screen and (max-width: 991px) {
       padding-bottom: 35px;
       margin-right: -15px;
@@ -35,6 +34,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: sticky;
+    top: 72px;
 
     @media only screen and (max-width: 991px) {
       min-height: inherit;
@@ -46,7 +47,7 @@
     align-items: flex-start;
     gap: 30px;
     flex-wrap: wrap;
-    
+
     @media only screen and (max-width: 991px) {
       flex-wrap: nowrap;
       flex-direction: column;
@@ -117,6 +118,8 @@
     display: flex;
     align-items: center;
     background: #f3f3f3;
+
+  
 
     @media only screen and (max-width: 991px) {
       max-width: 330px;

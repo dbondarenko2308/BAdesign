@@ -1,6 +1,6 @@
 .mech-block {
   overflow: hidden;
-  margin-bottom: 170px;
+  margin-bottom: 130px;
 
   @media only screen and (max-width: 991px) {
     margin-bottom: 70px;
@@ -8,6 +8,12 @@
 
   &__item {
     background: #f3f3f3;
+
+    &:hover {
+      .mech-block__text {
+        color: #bc4242;
+      }
+    }
   }
 
   &__container {
@@ -32,7 +38,6 @@
     mix-blend-mode: darken;
     height: 658px;
     width: 100%;
-
 
     @media only screen and (max-width: 991px) {
       height: 330px;
@@ -76,7 +81,7 @@
     transition: 300ms;
 
     &:hover {
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 }

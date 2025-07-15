@@ -780,7 +780,7 @@ video {
 // Page-content
 
 .page-content {
-  margin-bottom: 170px;
+  margin-bottom: 130px;
 
   @media only screen and (max-width: 991px) {
     margin-bottom: 70px;
@@ -835,10 +835,10 @@ video {
     color: #333;
     margin-bottom: 40px;
     margin-top: 20px;
+    font-family: $bound;
 
     @media only screen and (max-width: 991px) {
       font-size: 25px;
-      word-break: break-all;
       margin-bottom: 30px;
     }
 
@@ -856,6 +856,11 @@ video {
 .error {
   position: relative;
   margin-bottom: 80px;
+
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 182px;
+    margin-top: 80px;
+  }
 
   &:before {
     content: '';
@@ -939,6 +944,7 @@ video {
 
     @media only screen and (max-width: 991px) {
       margin-bottom: 20px;
+      font-size: 18px;
     }
   }
 
