@@ -30,7 +30,7 @@
   }
 
   &__content {
-    min-height: 700px;
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,6 +39,7 @@
 
     @media only screen and (max-width: 991px) {
       min-height: inherit;
+      height: auto;
     }
   }
 
