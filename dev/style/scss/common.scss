@@ -786,8 +786,6 @@ video {
     margin-bottom: 70px;
   }
 
-  h1 {
-  }
 
   ol {
     padding-left: 20px;
@@ -840,6 +838,7 @@ video {
     @media only screen and (max-width: 991px) {
       font-size: 25px;
       margin-bottom: 30px;
+      word-break: break-all;
     }
 
    
